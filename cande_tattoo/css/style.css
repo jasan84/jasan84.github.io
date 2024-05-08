@@ -1,0 +1,518 @@
+
+html{
+    scroll-behavior: smooth;
+}
+
+:root{
+    --tamanio_fuente:1.5vw;
+    --color_ppal:rgb(80, 7, 129);
+    --color_sec:rgb(255, 51, 153);
+}
+
+@font-face {
+    font-family: fuente_base;
+    src: url("../fonts/VTC-FreehandTattooOne.ttf");
+    
+}
+
+
+@font-face {
+
+    font-family: montserrat;
+    /*src:url("../fonts/Montserrat-Regular.ttf");*/
+    src:url("../fonts/Montserrat-Light.ttf");
+}   
+
+body{
+    font-family: fuente_base;
+    font-weight: bold;
+    margin:0px;
+}
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height:20vh;
+    border:solid 1px black;
+    margin:0px;
+    z-index: 1;
+    background-color:var(--color_ppal);
+}
+
+#fondo-bio{    
+    background-image:url("../img/fondo-bio.webp");
+}
+
+#fondo-tecnica{    
+    background-image:url("../img/fondo-tecnica.webp");
+}
+
+#fondo-galeria{
+    background-image:url("../img/fondo-galeria.webp");
+}
+
+#fondo-faqs{
+    background-image:url("../img/fondo-faqs.webp");
+}
+#fondo-contacto{
+    background-image:url("../img/fondo-contacto.webp");
+}
+
+
+.cont-logo{
+    position:absolute;
+    left:15%;
+    top:50%;
+    transform:translateY(-50%);
+    min-height:100%;
+    aspect-ratio: 1.5;
+    /*height:80%;
+    border:dashed 1px white;
+    background-color: rgba(0,0,0,0.5);
+*/
+
+}
+.logo{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:100%;
+    aspect-ratio:1;
+
+}
+
+.logo-marco{
+    stroke-miterlimit:10;
+    stroke:#f39;
+    fill:none;
+    stroke-width: 20px;  
+    /*text-shadow: var(--color_sec) 2px 2px 10px*/;
+    filter: drop-shadow(3px 50px 50px var(--color_sec));
+    transform:translateX(15px);
+}
+
+.logo-palabra-cande{
+    fill:var(--color_sec);
+    filter: drop-shadow(3px 50px 50px var(--color_sec));
+    stroke:white;
+    stroke-width: 8px;
+}
+
+.logo-palabra-tattoo{
+    fill:#fff;
+    filter: drop-shadow(3px 10px 40px white);
+
+}
+
+
+.nav{
+    /*display:inline-block;*/
+    position:absolute;
+    right:5rem;
+    bottom:50%;
+    transform:translateY(50%);
+    max-height: 80%;
+    max-width:50%;
+    padding:0rem;
+}
+
+.lista-nav{
+    display:inline-block;    
+    padding:0rem;
+    margin:0rem;
+    font-size:var(--tamanio_fuente);
+    color:var(--color_sec);
+    max-width: 100%;
+}
+
+.item-nav{
+    display:inline-block;
+    margin:1rem;
+    padding:0rem;
+}
+
+.enlace-seccion{
+    text-decoration: none;
+    color: var(--color_sec);
+    }
+    
+.enlace-seccion:hover{
+        cursor:pointer;
+        text-shadow: var(--color_sec) 2px 2px 10px;
+        color:white;
+}
+
+.contenido{
+    position:relative;
+    width:100%;
+}
+
+.seccion-presentacion{
+    /*border:dashed 1px black;
+    width:100%;*/
+    background-color: lightblue;
+    height:100vh;
+}
+
+
+.seccion-bio{
+    position:relative;
+    /*background-color:yellow;*/
+    height:100vh;
+}
+
+.cont-bio{
+    position:relative;
+    /*background-color:pink;*/
+    height:80%;
+    width:90%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);     
+
+}
+
+.fondos{
+    content:"";
+    position:absolute;
+    margin:0px;
+    padding:0px;
+    width:100%;
+    height:100%;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position: center;
+    opacity:0.5;
+    background-attachment: fixed;
+}
+
+.cont-avatar-bio{
+    position:absolute;
+    top:15%;
+    left:10%;
+    /*background-color:red;*/
+    height:25rem;
+    max-height:80%;
+    aspect-ratio:1;
+    margin-right:500px;
+    border-radius: 100%;
+    overflow:hidden;
+    background-image:url("../img/avatar_cande.png");
+    background-position: center;
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+.cuadro-bio{
+    position:absolute;
+    background-color:rgba(255,255, 255, 0.6);
+    width:45%;
+    top:50%;
+    right:10%;
+    transform:translateY(-50%);
+    max-height:90%;
+    overflow:scroll;  
+    scrollbar-width: none;
+    margin-left:2rem;
+    border-radius: 7rem 1rem 7rem 1rem;
+    border:inset 5px var(--color_sec);
+}
+
+.info-bio{
+    margin:50px;
+    text-align:justify;
+    line-height: 2.5rem;
+    color:var(--color_ppal);
+    text-shadow: var(--color_sec) 2px 2px 2px;    
+    font-weight: bold;
+}
+
+.seccion-tecnica{
+    position:relative;
+    /*height:100vh;*/
+    min-height:100vh;
+    /*background-color:lightgreen;*/
+    /*padding:80px 0px;*/
+}
+
+.cont-tecnica{
+    /*background-color:green;*/
+    padding:5%;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width:80%;
+    max-height:70%;
+    margin:10px auto;
+    overflow:scroll;
+    scrollbar-width: none;
+}
+
+.tarjeta-tecnica{
+    background-color:rgba(255, 255, 255, 0.6);
+    border:inset 5px var(--color_sec);
+    width:25vw;
+    margin:5px;
+    justify-content: center;
+    text-align:center;
+    border-radius: 5rem 1rem 5rem 1rem;
+}
+
+.titulo-tarjeta-tecnica{
+    margin:30px auto;
+    font-size:2.5vw;
+    color:var(--color_ppal);
+    text-shadow:var(--color_sec) 2px 2px 2px;
+}
+
+.resumen-tarjeta-tecnica{
+    font-size:1.2vw;
+    margin:10px;
+    color:var(--color_ppal);
+    text-shadow: var(--color_sec) 1px 1px 2px;    
+    font-family: montserrat;
+}
+
+.icono-tarjeta-tecnica{
+    width:20%;
+}
+.seccion-galeria{
+    position:relative;
+    min-height:100vh;
+    /*background-color:brown;*/
+}
+
+.cont-galeria{
+    position:absolute;
+    top:5%;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width:70%;
+    max-height:90%;
+    margin:10px auto;
+    overflow-y:scroll;
+    scrollbar-width: none;
+}
+
+.tarjeta-galeria{
+    /*display:inline-block;
+    background-color:rgba(255, 255, 255, 0.8);*/
+    /*border:dashed 1px rgb(92, 91, 91);*/    
+    border:inset 5px var(--color_sec);
+    border-radius: 40%;
+    width:20rem;    
+    aspect-ratio:1;
+    margin:10px auto;
+    text-align:center;
+    background-image:url("../img/little-tattoo-collection-temporary-tattoo-868.webp");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.descripcion-galeria{
+    display:none;
+}
+
+.seccion-faqs{
+    position:relative;
+    /*width:100vh;*/
+    min-height:100vh;
+    margin:0px;
+    padding:0px;
+    /*overflow-y:scroll;
+    scrollbar-width: none;*/
+}    
+
+.cont-faqs{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    max-width:95%;
+    height:60%;
+    padding:2rem;
+    margin:0px;
+    overflow-y:scroll;
+    scrollbar-width: none;
+    background-color:rgba(255, 255, 255, 0.6);
+    border-radius: 5rem 1rem 5rem 1rem;
+    border:inset 5px var(--color_sec);
+}
+
+.pregunta-faqs{
+    color:var(--color_ppal);
+    text-shadow: var(--color_sec) 2px 2px 2px;
+    font-size:18px;
+    text-align: center;
+}
+
+.respuesta-faqs{
+    color:var(--color_sec);
+    text-shadow: var(--color_ppal) 1px 1px 2px;    
+}
+
+hr{
+    width:50%;
+}
+
+
+.seccion-contacto{
+    position:relative;
+    /*min-width:100vh;*/
+    min-height:90vh;
+    /*background-color:lightsalmon;*/
+    margin:0px;
+}
+
+.cont-contacto{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:80%;
+    height:90%;
+    min-height:50%;
+    padding:2rem;
+}
+
+.form-contacto{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background-color:rgba(255, 255, 255, 0.6);
+    border-radius: 5rem 1rem 5rem 1rem;
+    border:inset 5px var(--color_sec);
+    max-height:80%;
+    width:70%;
+    padding:0;
+    overflow-y:scroll;
+    scrollbar-width: none;
+}
+
+.div-form{
+    text-align:center;
+    margin:0;
+}
+
+.subdiv-form{
+    display:inline-block;
+    margin:1rem;
+}
+
+.etiq-entrada-formulario{
+    
+    color:var(--color_ppal);
+    text-shadow: var(--color_sec) 2px 2px 2px;
+}
+
+.entrada-formulario{
+    font-family: fuente_base;
+    font-weight: normal;
+    font-size:18px;
+    border-radius: 1rem 0rem 1rem 0rem;
+    border:inset 2px var(--color_sec);
+    color:var(--color_ppal);
+    text-shadow: var(--color_sec) 1px 1px 2px;   
+}
+
+#cuadro-mensaje{
+    width:40em;
+    min-height:5em;
+    max-width: 80%;
+    border-radius: 1rem 0rem 1rem 0rem;
+    border:inset 2px var(--color_sec);
+}
+
+
+footer{
+    min-height:10vh;
+    background-color:var(--color_ppal);
+    color:var(--color_sec);
+    text-align: center;
+}
+
+footer address{
+    display:inline-block;
+    font-size:14px;
+}
+
+.lista-redes{
+    display:inline-block;
+}
+
+.item-redes{
+    display:inline-block;
+    margin:0px;
+    padding:0px;
+}
+
+.ico-red-social{
+    width:1.2rem;
+    aspect-ratio:1;
+    margin:0 0.5rem;
+}
+
+    .ico-red-social:hover{
+        transform:scale(2);
+    }
+
+
+
+
+/*------------------------  CAROUSEL ------------------------ */
+.carousel{
+	width: 100%;
+	height: 100vh;
+	margin: 0px;
+	position: relative;
+	overflow: hidden;
+}
+
+/* INI CAR1 */
+
+.grupo_elem_carr1{
+	height: 100%;
+	position: absolute;
+	display: flex;
+	flex-direction: row;
+	animation: ease-in;
+	transition: 2s;
+}		
+
+			
+
+.contenido_carr1{
+	width:100% ;
+	height: 100%;
+	position: relative;
+ 	background-size: cover;
+}
+
+.contenido_carr1 .texto_contenido_carr1{
+	color: white;
+    font-family: montserrat;
+    /*color:var(--color_sec);*/
+    text-shadow: var(--color_sec) 10px 10px 20px;   
+	font-size: 22px;
+	width: 30%;
+	height:100%;
+	position: absolute;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding:10% 1%;
+	justify-content: center;;
+}
+
