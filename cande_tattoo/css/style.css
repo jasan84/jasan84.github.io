@@ -4,13 +4,13 @@ html{
 }
 
 :root{
-    --tamanio_fuente:1.5vw;
+    --tamanio_fuente:clamp(25px, 1.5vw, 31px);;
     --color_ppal:rgb(80, 7, 129);
     --color_sec:rgb(255, 51, 153);
 }
 
 @font-face {
-    font-family: fuente_base;
+    font-family: tattooone;
     src: url("../fonts/VTC-FreehandTattooOne.ttf");
     
 }
@@ -24,9 +24,12 @@ html{
 }   
 
 body{
-    font-family: fuente_base;
+    /*font-family: tattooone;*/
     font-weight: bold;
     margin:0px;
+        
+    font-family: montserrat;
+    font-size:clamp(18px, 1.4vw, 25px);
 }
 
 header{
@@ -39,6 +42,7 @@ header{
     margin:0px;
     z-index: 1;
     background-color:var(--color_ppal);
+    font-family: tattooone;
 }
 
 #fondo-bio{    
@@ -145,6 +149,20 @@ header{
         color:white;
 }
 
+.fondos{
+    content:"";
+    position:absolute;
+    margin:0px;
+    padding:0px;
+    width:100%;
+    height:100vh;
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position: center;
+    opacity:0.5;
+    background-attachment: fixed;
+}
+
 .contenido{
     position:relative;
     width:100%;
@@ -157,47 +175,39 @@ header{
     height:100vh;
 }
 
-
 .seccion-bio{
     position:relative;
     /*background-color:yellow;*/
     height:100vh;
+    margin:0px;
+    padding:0px;
+    width: 100%;
 }
 
 .cont-bio{
-    position:relative;
+    position:absolute;
     /*background-color:pink;*/
-    height:80%;
     width:90%;
+    height:80%;
     top:50%;
     left:50%;
-    transform:translate(-50%, -50%);     
-
-}
-
-.fondos{
-    content:"";
-    position:absolute;
-    margin:0px;
-    padding:0px;
-    width:100%;
-    height:100%;
-    background-size:cover;
-    background-repeat:no-repeat;
-    background-position: center;
-    opacity:0.5;
-    background-attachment: fixed;
+    transform:translate(-50%, -50%); 
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    justify-content: space-evenly;
 }
 
 .cont-avatar-bio{
-    position:absolute;
+    /*position:absolute;
     top:15%;
-    left:10%;
+    left:10%;*/
     /*background-color:red;*/
-    height:25rem;
-    max-height:80%;
+    /*height:25rem;
+    max-height:80%;*/
+    height:clamp(30%,15em,50vw);
     aspect-ratio:1;
-    margin-right:500px;
+    /*margin-right:500px;*/
     border-radius: 100%;
     overflow:hidden;
     background-image:url("../img/avatar_cande.png");
@@ -206,27 +216,28 @@ header{
     background-repeat:no-repeat;
 }
 .cuadro-bio{
-    position:absolute;
-    background-color:rgba(255,255, 255, 0.6);
+    /*position:absolute;
     width:45%;
-    top:50%;
     right:10%;
     transform:translateY(-50%);
-    max-height:90%;
+    top:50%;*/
+    background-color:rgba(255,255, 255, 0.6);    
+    width:clamp(70%, 30em, 90%);
+    height: 70%;
     overflow:scroll;  
     scrollbar-width: none;
-    margin-left:2rem;
     border-radius: 7rem 1rem 7rem 1rem;
     border:inset 5px var(--color_sec);
 }
 
 .info-bio{
-    margin:50px;
-    text-align:justify;
+    margin:30px;
+    text-align:left;
     line-height: 2.5rem;
     color:var(--color_ppal);
     text-shadow: var(--color_sec) 2px 2px 2px;    
-    font-weight: bold;
+    /*font-family: montserrat;
+    font-size:clamp(25px, 1.5vw, 31px);*/
 }
 
 .seccion-tecnica{
@@ -247,8 +258,8 @@ header{
     display:flex;
     flex-direction:row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    width:80%;
+    justify-content: space-between;
+    width:80vw;
     max-height:70%;
     margin:10px auto;
     overflow:scroll;
@@ -256,9 +267,10 @@ header{
 }
 
 .tarjeta-tecnica{
+    /*font-size: clamp(15px, 1.5vw, 25px);*/
     background-color:rgba(255, 255, 255, 0.6);
     border:inset 5px var(--color_sec);
-    width:25vw;
+    width:23rem;
     margin:5px;
     justify-content: center;
     text-align:center;
@@ -267,13 +279,14 @@ header{
 
 .titulo-tarjeta-tecnica{
     margin:30px auto;
-    font-size:2.5vw;
+    font-family: tattooone;
+    font-size:clamp(15px, 1.5em,  48px);
     color:var(--color_ppal);
     text-shadow:var(--color_sec) 2px 2px 2px;
 }
 
 .resumen-tarjeta-tecnica{
-    font-size:1.2vw;
+    /*font-size:1.2vw;*/
     margin:10px;
     color:var(--color_ppal);
     text-shadow: var(--color_sec) 1px 1px 2px;    
@@ -340,8 +353,8 @@ header{
     top:50%;
     left:50%;
     transform:translate(-50%, -50%);
-    max-width:95%;
-    height:60%;
+    width:clamp(60%,85vw, 80%);
+    height:80%;
     padding:2rem;
     margin:0px;
     overflow-y:scroll;
@@ -352,15 +365,17 @@ header{
 }
 
 .pregunta-faqs{
+    font-family: tattooone ;
     color:var(--color_ppal);
     text-shadow: var(--color_sec) 2px 2px 2px;
-    font-size:18px;
+    font-size:0.9em;
     text-align: center;
 }
 
 .respuesta-faqs{
     color:var(--color_sec);
     text-shadow: var(--color_ppal) 1px 1px 2px;    
+    font-size:1.1em;
 }
 
 hr{
@@ -385,6 +400,7 @@ hr{
     height:90%;
     min-height:50%;
     padding:2rem;
+    margin:0px;
 }
 
 .form-contacto{
@@ -395,45 +411,56 @@ hr{
     background-color:rgba(255, 255, 255, 0.6);
     border-radius: 5rem 1rem 5rem 1rem;
     border:inset 5px var(--color_sec);
-    max-height:80%;
-    width:70%;
+    max-height:70%;
+    width:80%;
     padding:0;
     overflow-y:scroll;
     scrollbar-width: none;
+    margin:0px;
 }
 
 .div-form{
     text-align:center;
     margin:0;
+    width:100%;
 }
 
 .subdiv-form{
     display:inline-block;
     margin:1rem;
 }
+.form-inf{
+    width: 90%;
+    margin:auto;
+}
+.form-inf .subdiv-form{
+    width: 90%;
+}
 
 .etiq-entrada-formulario{
     
     color:var(--color_ppal);
     text-shadow: var(--color_sec) 2px 2px 2px;
+    font-family: tattooone;
 }
 
 .entrada-formulario{
-    font-family: fuente_base;
+    font-family: montserrat;
     font-weight: normal;
     font-size:18px;
     border-radius: 1rem 0rem 1rem 0rem;
     border:inset 2px var(--color_sec);
     color:var(--color_ppal);
     text-shadow: var(--color_sec) 1px 1px 2px;   
+    
 }
 
 #cuadro-mensaje{
-    width:40em;
+    width:clamp(30%,200em, 100%);
     min-height:5em;
-    max-width: 80%;
     border-radius: 1rem 0rem 1rem 0rem;
     border:inset 2px var(--color_sec);
+    margin:0px;
 }
 
 
@@ -490,9 +517,7 @@ footer address{
 	flex-direction: row;
 	animation: ease-in;
 	transition: 2s;
-}		
-
-			
+}					
 
 .contenido_carr1{
 	width:100% ;
@@ -507,12 +532,12 @@ footer address{
     /*color:var(--color_sec);*/
     text-shadow: var(--color_sec) 10px 10px 20px;   
 	font-size: 22px;
-	width: 30%;
+	width: clamp(30%,20em, 100%);
 	height:100%;
 	position: absolute;
-	left: 0;
+	left: 0px;
+    bottom:0px;
 	background-color: rgba(0, 0, 0, 0.5);
-	padding:10% 1%;
-	justify-content: center;;
+    align-content:center;
 }
 
