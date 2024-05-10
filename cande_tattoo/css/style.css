@@ -155,7 +155,7 @@ header{
     margin:0px;
     padding:0px;
     width:100%;
-    height:100vh;
+    height:100%;
     background-size:cover;
     background-repeat:no-repeat;
     background-position: center;
@@ -386,7 +386,7 @@ hr{
 .seccion-contacto{
     position:relative;
     /*min-width:100vh;*/
-    min-height:90vh;
+    height:85vh;
     /*background-color:lightsalmon;*/
     margin:0px;
 }
