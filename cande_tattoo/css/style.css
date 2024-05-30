@@ -4,7 +4,7 @@ html{
 }
 
 :root{
-    --tamanio_fuente:clamp(25px, 1.5vw, 31px);;
+    --tamanio_fuente:clamp(25px, 1.5vw, 31px);
     --color_ppal:rgb(80, 7, 129);
     --color_sec:rgb(255, 51, 153);
 }
@@ -21,38 +21,7 @@ html{
     font-family: montserrat;
     /*src:url("../fonts/Montserrat-Regular.ttf");*/
     src:url("../fonts/Montserrat-Light.ttf");
-}   
-
-body{
-    /*font-family: tattooone;*/
-    font-weight: bold;
-    margin:0px;
-        
-    font-family: montserrat;
-    font-size:clamp(18px, 1.4vw, 25px);
-}
-
-header{
-    /*position:fixed;*/
-    display:flex;
-    flex-direction:row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    position:sticky;
-    top:0;
-    left:0;
-    width: 100%;
-    /*height:clamp(3em,40vh, 7em);*/
-    height: 20vh;
-    /*height: 7em;*/
-    border:solid 1px black;
-    margin:0px;
-    z-index: 1;
-    background-color:var(--color_ppal);
-    font-family: tattooone;
-    transition: 1.2s;
-}
+} 
 
 #fondo-bio{    
     background-image:url("../img/fondo-bio.webp");
@@ -71,10 +40,38 @@ header{
 }
 #fondo-contacto{
     background-image:url("../img/fondo-contacto.webp");
+}  
+
+body{
+    /*font-family: tattooone;*/
+    font-weight: bold;
+    margin:0px;
+        
+    font-family: montserrat;
+    font-size:clamp(18px, 1.4vw, 25px);
+}
+
+header{
+    position:sticky;
+    top:0;
+    left:0;
+    width: 100%;
+    height:clamp(5em,20vh,5em);
+    /*display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border:solid 1px black;*/
+    margin:0px;
+    z-index: 1;
+    background-color:var(--color_ppal);
+    font-family: tattooone;
+    transition: 1.5s;
 }
 
 
-.cont-logo{
+#cont-logo{
     /*position:absolute;
     left:10%;
     top:50%;
@@ -84,22 +81,22 @@ header{
     position:absolute;
     top:50%;
     left:50%;*/
-    height:8vw;
+    position:absolute;
+    height:clamp(2vw,10vw,90%);
     aspect-ratio: 1.5;
     transition: 2s;
+    top:60%;
+    transform:translateY(-50%);
+    left:10%;
     /*height:80%;
     border:dashed 1px white;
     background-color: rgba(0,0,0,0.5);
 */
 
 }
-.logo{
-    /*position:absolute;*/
-    /*top:50%;*/
-    /*left:50%;*/
-    /*transform:translate(-50%,-50%);
-    width:100%;
-    aspect-ratio:1;*/
+#logo{
+    height:80%;
+    transition: 2s;
 
 }
 
@@ -127,21 +124,16 @@ header{
 }
 
 
-.nav{
-    /*display:inline-block;*/
-    /*position:absolute;
+#nav{
+    position:absolute;
     right:5%;
-    top:50%;
-    transform:translateY(-50%);*/
-    /*height: 80%;
-    width: 70%;*/
-    /*max-height: 80%;
-    max-width:50%;*/
-    padding:0rem;
-    /*overflow:scroll;
+    bottom:15%;
+    transition:1s;
+    max-height: 80%;
+    max-width: 70%;
+    overflow: scroll;
     scrollbar-width: none;
-    text-align: center;*/
-}
+    }
 
 .lista-nav{
     /*display:inline-block;    */
@@ -149,10 +141,13 @@ header{
     margin:0rem;
     /*font-size:var(--tamanio_fuente);*/
     color:var(--color_sec);
-    width: 100%;
+    max-width: 100%;
+    z-index: -2;
 }
 
 .item-nav{
+    /*font-size:120%;*/
+    font-size:1.2vw;
     position:relative;
     display:inline-block;
     margin:0.5em;
@@ -560,6 +555,7 @@ footer address{
     bottom:0px;
 	background-color: rgba(0, 0, 0, 0.5);
     align-content:center;
+    padding:30px;
 }
 
 
@@ -567,11 +563,9 @@ footer address{
 
 /*-------------- MEDIA QUERYS */
 
-
+/*
 @media screen and (max-width: 580px) {
   header {
-    /*height:clamp(2em,100vh, 5em);
-    padding:0px;*/
     display:none;
 }
 header a {
@@ -581,3 +575,4 @@ header a {
 }
 
 }
+*/
