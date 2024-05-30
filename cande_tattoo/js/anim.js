@@ -86,7 +86,7 @@ function revela_header(){
 
 	let hdr = document.getElementById('hdr');	
 	hdr.setAttribute('state','estirado');
-	hdr.setAttribute('style', "width:70%; height:50px; border-radius:20px; transition:1.2s; background-color:rgba(80, 7, 129,0.8)");
+	hdr.setAttribute('style', "width:70%; height:90px; border-radius:20px; transition:1.2s; background-color:rgba(80, 7, 129,0.8)");
 	anim_item_nav(document.getElementsByClassName('item-nav'));	
 	
 	setTimeout(function(){
