@@ -1,6 +1,8 @@
+
 //INI ANIM HEADER
 
 window.onscroll = function () {anim_item_nav(document.getElementsByClassName('item-nav'))};
+window.onload = function () {anim_car1()};
 
 function colapsa_header(){	
 
@@ -137,6 +139,101 @@ var intervalo_anim_car1 = setInterval(anim_vueltas_car1, tiempo_vuelta);
 };
 
 // FIN FUNCION CARROUSEL
+
+//INI ANIM TARJETAS TECNICAS
+
+
+//function anim_icono_tecnica(){
+	
+	let tarjetas = document.getElementsByClassName('tarjeta-tecnica');
+	let titulos = document.getElementsByClassName('titulo-tarjeta-tecnica');
+	let contenedor_iconos = document.getElementsByClassName('cont-icono-tarjeta-tecnica');
+	let iconos = document.getElementsByClassName('icono-tarjeta-tecnica');
+	let textos = document.getElementsByClassName('resumen-tarjeta-tecnica');
+	
+	let estilo_tarjetas_orig = [];
+	let estilo_titulos_orig = [];
+	let estilo_contenedor_iconos_orig = [];
+	let estilo_iconos_orig = [];
+	let estilo_textos_orig = [];
+	
+	
+	let tiempo_intervalo = 80;
+	let tiempo_intervalo2 = tiempo_intervalo*2;
+	let vibracion2;
+	let vibracion1;
+	var traslado = '0.8';
+
+	for(let a=0;a<tarjetas.length;a++){
+		
+		estilo_tarjetas_orig.push(window.getComputedStyle(tarjetas[a]));
+		estilo_iconos_orig.push(window.getComputedStyle(iconos[a]));
+		estilo_contenedor_iconos_orig.push(window.getComputedStyle(contenedor_iconos[a]));
+		estilo_textos_orig.push(window.getComputedStyle(textos[a]));		
+		estilo_titulos_orig.push(window.getComputedStyle(titulos[a]));		
+
+
+		//estilo_tarjetas_orig.push(tarjetas[a].getAttribute('style'));
+		estilo_tarjetas_orig.push(tarjetas[a].style);
+
+
+
+		tarjetas[a].addEventListener("mouseenter",(e) =>{
+
+			
+			vibracion1 = setInterval( function(){
+
+				iconos[a].style.transform='translate('+traslado+'px, -'+traslado+'px)';	
+
+			},tiempo_intervalo);
+
+			vibracion2 = setInterval( function(){
+	
+				iconos[a].style.transform='translate(-'+traslado+'px, '+traslado+'px)';
+	
+			},tiempo_intervalo2);
+		
+			contenedor_iconos[a].style.transition='1s';
+			tarjetas[a].style.transition='1s';
+			textos[a].style.transition='2s';
+			
+
+			tarjetas[a].style.backgroundColor='white';
+			contenedor_iconos[a].style.scale='3  3';
+			contenedor_iconos[a].style.transformOrigin ='0 0';
+			/*contenedor_iconos[a].style.transform='translateY(-200%)';*/		
+			contenedor_iconos[a].style.opacity='0.1';
+			textos[a].style.opacity='1';
+
+			setTimeout(function (){
+				
+			clearInterval(vibracion1);
+			clearInterval(vibracion2);
+			},2000);
+
+		});
+
+		tarjetas[a].addEventListener("mouseleave",(e) =>{
+		
+
+			tarjetas[a].setAttribute('style',estilo_tarjetas_orig[a]);
+			tarjetas[a].setAttribute('style','transition:1s');
+
+			contenedor_iconos[a].setAttribute('style',estilo_contenedor_iconos_orig[a]);
+			contenedor_iconos[a].setAttribute('style','transition:2s');
+
+			textos[a].setAttribute('style',estilo_textos_orig[a]);
+			textos[a].setAttribute('style','transition:2s');
+		
+			clearInterval(vibracion1);
+			clearInterval(vibracion2);
+
+
+		})
+	}
+//}
+
+//FIN ANIM TARJETAS TECNICAS
 
 
 
