@@ -48,7 +48,7 @@ body{
     margin:0px;
         
     font-family: montserrat;
-    font-size:clamp(18px, 1.4vw, 25px);
+    /*font-size:clamp(18px, 1.4vw, 25px);*/
 }
 
 p{
@@ -73,7 +73,8 @@ header{
     border:solid 1px black;*/
     margin:0px;
     z-index: 1;
-    background-color:var(--color_ppal);
+    /*background-color:var(--color_ppal);*/
+    background-color:rgba(80, 7, 129, 0.8);
     font-family: tattooone;
     transition: 1.5s;
 }
@@ -105,7 +106,7 @@ header{
 #logo{
     height:80%;
     transition: 2s;
-
+    cursor:pointer;
 }
 
 .logo-marco{
@@ -151,12 +152,11 @@ header{
     /*font-size:var(--tamanio_fuente);*/
     color:var(--color_sec);
     max-width: 100%;
-    z-index: -2;
+    z-index: -7;
 }
 
 .item-nav{
-    /*font-size:120%;*/
-    font-size:1.8vmax;
+    font-size:clamp(18px,1.2vw,30px);
     position:relative;
     display:inline-block;
     margin:5px;
@@ -202,7 +202,6 @@ header{
 
 .seccion-bio{
     position:relative;
-    /*background-color:yellow;*/
     height:100vh;
     margin:0px;
     padding:0px;
@@ -212,8 +211,8 @@ header{
 .cont-bio{
     position:absolute;
     /*background-color:pink;*/
-    width:90%;
-    height:80%;
+    width:95%;
+    height:90%;
     top:50%;
     left:50%;
     transform:translate(-50%, -50%); 
@@ -221,18 +220,23 @@ header{
     flex-wrap: wrap;
     flex-direction:row;
     justify-content: space-evenly;
+    padding:25px;
+}
+
+.cuadro-bio{
+    background-color:rgba(255,255, 255, 0.6);    
+    width:clamp(70%, 30em, 90%);
+    max-height: 90%;
+    border-radius: 7rem 1rem 7rem 1rem;
+    border:inset 2px var(--color_sec);
+    padding:25px;
+    text-align: center;
 }
 
 .cont-avatar-bio{
-    /*position:absolute;
-    top:15%;
-    left:10%;*/
-    /*background-color:red;*/
-    /*height:25rem;
-    max-height:80%;*/
-    height:clamp(30%,15em,50vw);
+    display:inline-block;
+    height:35%;
     aspect-ratio:1;
-    /*margin-right:500px;*/
     border-radius: 100%;
     overflow:hidden;
     background-image:url("../img/avatar_cande.png");
@@ -240,42 +244,29 @@ header{
     background-size:cover;
     background-repeat:no-repeat;
 }
-.cuadro-bio{
-    /*position:absolute;
-    width:45%;
-    right:10%;
-    transform:translateY(-50%);
-    top:50%;*/
-    background-color:rgba(255,255, 255, 0.6);    
-    width:clamp(70%, 30em, 90%);
-    height: 70%;
-    overflow:scroll;  
-    scrollbar-width: none;
-    border-radius: 7rem 1rem 7rem 1rem;
-    border:inset 5px var(--color_sec);
-}
 
 .info-bio{
-    margin:30px;
-    text-align:left;
-    line-height: 2.5rem;
+    position:relative;
+    max-height: 50%;
+    overflow:scroll;  
+    scrollbar-width: none;
+    padding:25px;
+}
+
+.texto-bio{
+    position:relative;
+    line-height: 180%;
+    text-align: center;
     color:var(--color_ppal);
-    /*text-shadow: var(--color_sec) 2px 2px 2px;    */
-    /*font-family: montserrat;
-    font-size:clamp(25px, 1.5vw, 31px);*/
+    font-size:20px;
 }
 
 .seccion-tecnica{
     position:relative;
-    /*height:100vh;*/
     min-height:100vh;
-    /*background-color:lightgreen;*/
-    /*padding:80px 0px;*/
 }
 
 .cont-tecnica{
-    /*background-color:green;*/
-    padding:5%;
     position:absolute;
     top:50%;
     left:50%;
@@ -284,7 +275,7 @@ header{
     flex-direction:row;
     flex-wrap: wrap;
     justify-content: center;
-    width:80vw;
+    width:95%;
     max-height:70%;
     margin:10px auto;
     overflow:scroll;
@@ -293,11 +284,10 @@ header{
 
 .tarjeta-tecnica{
     position:relative;
-    /*font-size: clamp(15px, 1.5vw, 25px);*/
     background-color:rgba(255, 255, 255, 0.6);
-    border:inset 5px var(--color_sec);
-    width:23rem;
-    height: 50vh;
+    border:inset 2px var(--color_sec);
+    width:400px;
+    height: 400px;
     margin:5px;
     justify-content: center;
     text-align:center;
@@ -306,18 +296,23 @@ header{
 }
 
 .titulo-tarjeta-tecnica{
-    margin:30px auto;
+    margin:20px auto 30px auto;
     font-family: tattooone;
-    font-size:clamp(15px, 1.5em,  48px);
+    font-size:36px;
     color:var(--color_ppal);
     /*text-shadow:var(--color_sec) 2px 2px 2px;*/
 }
 
 .resumen-tarjeta-tecnica{
-    position:relative;
-    margin:10px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    width:95%;
     color:var(--color_ppal);    
     font-family: montserrat;
+    font-size:1.2rem;
+    line-height: 150%;
     opacity:0;
     
 }
@@ -360,10 +355,7 @@ header{
 }
 
 .tarjeta-galeria{
-    /*display:inline-block;
-    background-color:rgba(255, 255, 255, 0.8);*/
-    /*border:dashed 1px rgb(92, 91, 91);*/    
-    border:inset 5px var(--color_sec);
+    border:inset 2px var(--color_sec);
     border-radius: 40%;
     width:20rem;    
     aspect-ratio:1;
@@ -374,8 +366,7 @@ header{
 .img-galeria{
     height:100%;
     filter:grayscale(100) blur(5px);
-    
-
+    scale: 1.5;
     
 }
 
@@ -385,12 +376,9 @@ header{
 
 .seccion-faqs{
     position:relative;
-    /*width:100vh;*/
     min-height:100vh;
     margin:0px;
     padding:0px;
-    /*overflow-y:scroll;
-    scrollbar-width: none;*/
 }    
 
 .cont-faqs{
@@ -406,21 +394,21 @@ header{
     scrollbar-width: none;
     background-color:rgba(255, 255, 255, 0.6);
     border-radius: 5rem 1rem 5rem 1rem;
-    border:inset 5px var(--color_sec);
+    border:inset 2px var(--color_sec);
 }
 
 .pregunta-faqs{
     font-family: tattooone ;
     color:var(--color_ppal);
-    /*text-shadow: var(--color_sec) 2px 2px 2px;*/
-    font-size:0.9em;
+    font-size:18px;
     text-align: center;
+    text-shadow: var(--color_ppal) 0.5px 0.5px 2px;
 }
 
 .respuesta-faqs{
     color:var(--color_sec);
-    /*text-shadow: var(--color_ppal) 1px 1px 2px;    */
-    font-size:1.1em;
+    font-size:20px;
+    line-height: 150%;
 }
 
 hr{
@@ -430,9 +418,7 @@ hr{
 
 .seccion-contacto{
     position:relative;
-    /*min-width:100vh;*/
     height:85vh;
-    /*background-color:lightsalmon;*/
     margin:0px;
 }
 
@@ -441,7 +427,7 @@ hr{
     top:50%;
     left:50%;
     transform:translate(-50%,-50%);
-    width:80%;
+    width:90%;
     height:90%;
     min-height:50%;
     padding:2rem;
@@ -455,9 +441,9 @@ hr{
     transform:translate(-50%,-50%);
     background-color:rgba(255, 255, 255, 0.6);
     border-radius: 5rem 1rem 5rem 1rem;
-    border:inset 5px var(--color_sec);
+    border:inset 2px var(--color_sec);
     max-height:70%;
-    width:80%;
+    width:90%;
     padding:0;
     overflow-y:scroll;
     scrollbar-width: none;
@@ -496,16 +482,17 @@ hr{
     border-radius: 1rem 0rem 1rem 0rem;
     border:inset 2px var(--color_sec);
     color:var(--color_ppal);
-    /*text-shadow: var(--color_sec) 1px 1px 2px;   */
+    text-align: center;
     
 }
 
 #cuadro-mensaje{
-    width:clamp(30%,200em, 100%);
+    width:clamp(30%,200em, 80%);
     min-height:5em;
     border-radius: 1rem 0rem 1rem 0rem;
     border:inset 2px var(--color_sec);
     margin:0px;
+    font-size: 20px;
 }
 
 
@@ -574,9 +561,8 @@ footer address{
 .contenido_carr1 .texto_contenido_carr1{
 	color: white;
     font-family: montserrat;
-    /*color:var(--color_sec);*/
-    /*text-shadow: var(--color_sec) 10px 10px 20px;   */
-	font-size: 22px;
+	font-size: 24px;
+    line-height: 150%;
 	width: clamp(30%,20em, 100%);
 	height:100%;
 	position: absolute;
