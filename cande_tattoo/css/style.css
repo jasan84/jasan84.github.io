@@ -64,16 +64,9 @@ header{
     top:0;
     left:0;
     width: 100%;
-    height:clamp(5em,20vh,5em);
-    /*display:flex;
-    flex-direction:row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    border:solid 1px black;*/
+    height:clamp(5em,20vh,5em);   
     margin:0px;
-    z-index: 1;
-    /*background-color:var(--color_ppal);*/
+    z-index: 1;   
     background-color:rgba(80, 7, 129, 0.8);
     font-family: tattooone;
     transition: 1.5s;
@@ -81,15 +74,6 @@ header{
 
 
 #cont-logo{
-    /*position:absolute;
-    left:10%;
-    top:50%;
-    transform:translateY(-50%);*/
-    /*height:clamp(1rem,80%,15rem);*/
-    /*
-    position:absolute;
-    top:50%;
-    left:50%;*/
     position:absolute;
     height:clamp(2vw,10vw,90%);
     aspect-ratio: 1.5;
@@ -97,12 +81,8 @@ header{
     top:60%;
     transform:translateY(-50%);
     left:2%;
-    /*height:80%;
-    border:dashed 1px white;
-    background-color: rgba(0,0,0,0.5);
-*/
-
 }
+
 #logo{
     height:80%;
     transition: 2s;
@@ -161,6 +141,7 @@ header{
     display:inline-block;
     margin:5px;
     padding:0rem;
+    text-shadow: var(--color_ppal) 2px 2px 2px;
 }
 
 .enlace-seccion{
@@ -194,8 +175,6 @@ header{
 }
 
 .seccion-presentacion{
-    /*border:dashed 1px black;
-    width:100%;*/
     background-color: lightblue;
     height:100vh;
 }
@@ -227,7 +206,7 @@ header{
     background-color:rgba(255,255, 255, 0.6);    
     width:clamp(70%, 30em, 90%);
     max-height: 90%;
-    border-radius: 7rem 1rem 7rem 1rem;
+    /*border-radius: 7rem 1rem 7rem 1rem;*/
     border:inset 2px var(--color_sec);
     padding:25px;
     text-align: center;
@@ -291,7 +270,8 @@ header{
     margin:5px;
     justify-content: center;
     text-align:center;
-    border-radius: 5rem 1rem 5rem 1rem;
+    /*border-radius: 5rem 1rem 5rem 1rem;*/    
+    border-radius: 40%;
     overflow:hidden;
 }
 
@@ -393,7 +373,7 @@ header{
     overflow-y:scroll;
     scrollbar-width: none;
     background-color:rgba(255, 255, 255, 0.6);
-    border-radius: 5rem 1rem 5rem 1rem;
+    /*border-radius: 5rem 1rem 5rem 1rem;*/
     border:inset 2px var(--color_sec);
 }
 
@@ -440,7 +420,7 @@ hr{
     left:50%;
     transform:translate(-50%,-50%);
     background-color:rgba(255, 255, 255, 0.6);
-    border-radius: 5rem 1rem 5rem 1rem;
+    /*border-radius: 5rem 1rem 5rem 1rem;*/
     border:inset 2px var(--color_sec);
     max-height:70%;
     width:90%;
@@ -479,7 +459,7 @@ hr{
     font-family: montserrat;
     font-weight: normal;
     font-size:18px;
-    border-radius: 1rem 0rem 1rem 0rem;
+    /*border-radius: 1rem 0rem 1rem 0rem;*/
     border:inset 2px var(--color_sec);
     color:var(--color_ppal);
     text-align: center;
@@ -489,7 +469,7 @@ hr{
 #cuadro-mensaje{
     width:clamp(30%,200em, 80%);
     min-height:5em;
-    border-radius: 1rem 0rem 1rem 0rem;
+    /*border-radius: 1rem 0rem 1rem 0rem;*/
     border:inset 2px var(--color_sec);
     margin:0px;
     font-size: 20px;
@@ -563,7 +543,7 @@ footer address{
     font-family: montserrat;
 	font-size: 24px;
     line-height: 150%;
-	width: clamp(30%,20em, 100%);
+	width: clamp(30%,20em, 90vw);
 	height:100%;
 	position: absolute;
 	left: 0px;
@@ -573,21 +553,3 @@ footer address{
     padding:30px;
 }
 
-
-
-
-/*-------------- MEDIA QUERYS */
-
-/*
-@media screen and (max-width: 580px) {
-  header {
-    display:none;
-}
-header a {
-  float: none;
-  display: block;
-  text-align: left;
-}
-
-}
-*/

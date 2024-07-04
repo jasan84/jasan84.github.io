@@ -2,7 +2,7 @@
 //INI ANIM HEADER
 
 window.onscroll = function () {toggle_header()};
-window.onload = function () {anim_car1(), anim_tarjeta_galeria()};
+window.onload = function () {anim_car1(), anim_tarjeta_galeria(),anim_icono_tecnica()};
 
 
 function toggle_header(){
@@ -45,23 +45,35 @@ function anim_header(tipo_anim){
 
 	let nav = document.getElementById('nav');
 	let estilo_nav_orig = nav.style;	
-	
+
+		
+	nav.setAttribute("style","overflow:scroll;");	
 	hdr.setAttribute('state',tipo_anim);
 	
 	if (tipo_anim == "colapsado"){
 			
 		hdr.setAttribute('style','width:80px; height:50px;border-radius:0px 50% 50% 0px; transition:1.5s;');
 //		hdr.setAttribute('state','colapsado');
-		cont_logo.setAttribute('style','margin:0px');			
-		nav.setAttribute('onclick','revela_header()');					
+		cont_logo.setAttribute('style','margin:0px');
+		nav.setAttribute('onmouseenter','revela_header()');
+		//logo.setAttribute('onclick','revela_header()');					
 
 	} else if (tipo_anim == "expandido"){
 		hdr.setAttribute('style',estilo_hdr_orig);
 		hdr.setAttribute('style',"transition:0.2s");
 //		hdr.setAttribute('state','expandido');
 		cont_logo.setAttribute('style',estilo_cont_logo_orig);
-		nav.removeAttribute('onclick','revela_header()');
+		nav.removeAttribute('onmouseenter','revela_header()');
+		//logo.removeAttribute('onclick','revela_header()');
 	}
+}
+
+function revela_header(){
+	
+	let nav = document.getElementById('nav');	
+	nav.setAttribute("style","overflow:unset; transform:translate(100%, 50%);");
+	anim_item_nav("expandido");
+
 }
 
 function anim_item_nav(tipo_anim){
@@ -102,11 +114,12 @@ function anim_item_nav(tipo_anim){
 			
 		},80)
 
+		/*
 		if (tipo_anim == 'colapsado'){
-			lista_items_nav.setAttribute('display','none');
+			lista_items_nav.setAttribute('style','display:none');
 		}else if(tipo_anim == 'expandido'){
-			lista_items_nav.setAttribute('style', 'inline-block');
-		}
+			lista_items_nav.setAttribute('style', 'display:inline-block');
+		}*/
 
 }
 
@@ -157,7 +170,7 @@ var intervalo_anim_car1 = setInterval(anim_vueltas_car1, tiempo_vuelta);
 //INI ANIM TARJETAS TECNICAS
 
 
-//function anim_icono_tecnica(){
+function anim_icono_tecnica(){
 	
 	let tarjetas = document.getElementsByClassName('tarjeta-tecnica');
 	let titulos = document.getElementsByClassName('titulo-tarjeta-tecnica');
@@ -207,6 +220,7 @@ var intervalo_anim_car1 = setInterval(anim_vueltas_car1, tiempo_vuelta);
 			
 
 			tarjetas[a].style.backgroundColor='white';
+			tarjetas[a].style.borderRadius='0px';
 			contenedor_iconos[a].style.scale='3 3';
 			contenedor_iconos[a].style.transformOrigin ='0 0';
 			/*contenedor_iconos[a].style.transform='translateY(-200%)';*/		
@@ -239,7 +253,7 @@ var intervalo_anim_car1 = setInterval(anim_vueltas_car1, tiempo_vuelta);
 
 		})
 	}
-//}
+}
 
 //FIN ANIM TARJETAS TECNICAS
 
