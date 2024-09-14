@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECICLO</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body onload='hora_actual()'>
+
+    <div id="celular">
+        <div id="marco-externo-celular">
+            
+            <div id="body-celular">
+
+                <div id="barra-notif-celular">
+                    
+                    <div id="cont-hora">
+                        <p class="indicadores-celular" id="hora-celular"></p>
+                    </div>
+
+                    <div id="cont-indicadores-celular">
+                        <div class="indicadores-celular" id="indicador-antena"></div>
+                        <div class="indicadores-celular" id="indicador-wifi"></div>
+                        <div class="indicadores-celular" id="indicador-bateria"></div>
+                    </div>                
+
+                </div>
+
+                <div id="contenedor-logo">
+                    <div id="cubre-logo-fondo"><img id="cubre-logo-img"src="assets/logo_reciclo/O_flecha.png" onload="anim_logo_bienvenida()"/></div>
+                    <a href="login.html"><img src="assets/logo_reciclo/logo_reciclo.png" alt="logo-reciclo"/></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script src="js/anim.js"></script>
+
+</html>
