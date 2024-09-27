@@ -25,8 +25,9 @@ function anim_cara(event){
 
         if(mov_scroll == 100){
 
-            if(pos_x < 1){pos_x = 0}
-            if(pos_y < 1){pos_y = 0}
+            if(pos_x < 50){pos_x = 0}
+            if(pos_y < 50){pos_y = 0}
+
 
             partes_cara[i].setAttribute('style', 'transform:translate('+pos_x/2+'px,'+pos_y/2+'px)')
         }else{
