@@ -15,23 +15,23 @@
 		</div>
 		<div id="cont-menu-nav">
 			<ul id="menu-nav">
-				<li class="item-nav">Nosotros</li>
-				<li class="item-nav">Proyectos</li>
-				<li class="item-nav">Servicios</li>
-				<li class="item-nav">Contacto</li>
+				<a class="item-nav" href="#cont-nosotros">Nosotros</a>
+				<a class="item-nav" href="#cont-servicios">Servicios</a>
+				<a class="item-nav" href="#cont-proyectos">Proyectos</a>
+				<a class="item-nav" href="#cont-contacto">Contacto</a>
 			</ul>
 		</div>
 	</nav>
 
-	<div id="cont-portada">
+	<div class="secciones"  id="cont-portada">
 		<span id="sup-background"></span>
 		<h1>Especialistas en desarrollar soluciones tecnológicas innovadoras para la industria</h1>
 	</div>
 
 
-	<div id="cont-nosotros">
+	<div class="secciones"  id="cont-nosotros">
 		<span id=contenido-nosotros>
-			<h3>Nosotros</h3>
+			<h3 class="titulo-seccion" style="color:black">Nosotros</h3>
 
 			<div id="cont-contadores">
 
@@ -55,8 +55,8 @@
 	</div>
 
 
-	<div id="cont-servicios">
-		<h3>Servicios</h3>
+	<div class="secciones"  id="cont-servicios">
+		<h3 class="titulo-seccion">Servicios</h3>
 
 		<div id="cont-tarjetas-serv" class="cont-tarjetas">
 
@@ -79,34 +79,78 @@
 	</div>
 
 
-	<div id="cont-proyectos">
+	<div class="secciones"  id="cont-proyectos">
 		
-		<h3>Proyectos</h3>
+		<h3 class="titulo-seccion">Proyectos</h3>
 
 
 		<div id="cont-tarjetas-proy" class="cont-tarjetas">
 
 			<div class="tarjeta-proy">
-				<div class="img-tarjeta-proy"><img src="https://fzingenieria.com/wp-content/uploads/2025/03/FZ3.webp"/></div>
+				<div class="img-tarjeta-proy" style="background-image: url('https://fzingenieria.com/wp-content/uploads/2025/03/FZ3.webp');background-size: cover;width: 100%;height: 400px;"></div>
 				<h4>Dispositivo de curvado</h4>
 				<p>Proyecto realizado para la industria automotriz</p>
 			</div>
 			
 			<div class="tarjeta-proy">
-				<div class="img-tarjeta-proy"><img src="https://fzingenieria.com/wp-content/uploads/2025/03/FZ4PC.webp"/></div>
+				<div class="img-tarjeta-proy" style="background-image: url('https://fzingenieria.com/wp-content/uploads/2025/03/FZ4PC.webp');background-size: cover;width: 100%;height: 400px;"></div>
 				<h4>Diseño e ingeniería</h4>
 				<p>Celda de soldadura</p>
 			</div>
 			
 			<div class="tarjeta-proy">
-				<div class="img-tarjeta-proy"><img src="https://fzingenieria.com/wp-content/uploads/2025/03/FZ6ROBOT.webp"/></div>
+				<div class="img-tarjeta-proy" style="background-image: url('https://fzingenieria.com/wp-content/uploads/2025/03/FZ6ROBOT.webp');background-size: cover;width: 100%;height: 400px;"></div>
 				<h4>Celda de soldadura</h4>
 				<p>Automatización para la industria de electrodomésticos</p>
 			</div>
 
 		</div>
 
+		<div id="cont-videos-proy">
+			
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/FiKUCYUr2EA?si=Sn-37V0As77tnRZi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/Mdr665jS2VY?si=mS1aUVYYVN6pJDR4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/2aUy4_UcMSU?si=ZzsXbdxom7UBh7o1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/WKTL6y001Kc?si=BFVzD6LbaOPlInF0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			
+		</div>
+
+
+	</div>
+
+	<div class="secciones" id="seccion-contacto">
+
+		<h3 class="titulo-seccion">Contacto</h3>
+
+			
+		<div id="cont-contacto">
+
+			<div class="info-contacto">
+				<h5 class="titulo-contacto">FZ Ingeniería Argentina</h5>
+				<b><p class="direccion-contacto">Av. 101 Dr. Ricardo Balbin 6974, B1657 Loma Hermosa, Bs. As</p></b>
+				<p class="titulo-tel">Ventas:</p>
+				<a  href="tel:+5491134521086" class="num-tel">+54 9 11 3452 1086</a>
+				<br>
+				<a  href="tel:+5491151058388" class="num-tel">+54 9 11 5105 8388</a>
+				<p class="titulo-tel">Administración:</p>
+				<a  href="tel:++5491122983453" class="num-tel">+54 9 11 2298 3453</a>
+
+			</div>
+
+			<div class="info-contacto">
+				<h5 class="titulo-contacto">FZ Engenharia Brasil</h5>
+				<b><p class="direccion-contacto">Eng. Rainer Weitbrecht</p></b>
+				<a  href="tel:+5511976666310" class="num-tel">+55 11 97666 6310</a>
+				<br>
+				<a href="mailto:rainer.w@fzingenieria.com">rainer.w@fzingenieria.com</a>
+				<b><p class="direccion-contacto">Eng. Carlos Kinbaum</p></b>
+				<a  href="tel:+5511999503364" class="num-tel">+55 11 99950 3364</a>
+			</div>
+		</div>
+		
 	</div>
 
 
