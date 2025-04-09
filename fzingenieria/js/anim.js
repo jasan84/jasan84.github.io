@@ -1,4 +1,4 @@
-window.onscroll = function () {anim_header()};
+window.onscroll = function () {anim_header(), anim_seccion($('#cont-nosotros'), 0), anim_seccion($('#cont-servicios'), 1),anim_seccion($('#cont-proyectos'), 2)/*, anim_contador()*/};
 window.onload = function(){obtener_estilos()}
 
 
@@ -28,8 +28,6 @@ function obtener_estilos(){
 
 
 function anim_header(){
-
-
 	
 	let $header = $('#header')
 	let $logo = $('#cont-logo-nav')
@@ -66,13 +64,18 @@ function anim_header(){
 	}
 
 
-	/////////// INI ANIM NOSOTROS
+}
 
-	let $contenedor = $('#cont-nosotros')
+
+function anim_seccion(contenedor, offset){
+
+	let posicion_scroll = $(window).scrollTop()
+
+	let $contenedor = contenedor
 	let ancho_contenedor = parseFloat($contenedor.css('height').replaceAll('px'))
 
 
-	if((posicion_scroll >= (offset_contenedores[0] ) && posicion_scroll < ($contenedor.offset().top) + ancho_contenedor)){
+	if((posicion_scroll >= (offset_contenedores[offset] ) && posicion_scroll < ($contenedor.offset().top) + ancho_contenedor)){
 
 		
 		$contenedor.css({'visibility':"visible", 'transform':'translateX(0%)'})
@@ -81,50 +84,75 @@ function anim_header(){
 		$contenedor.css({'visibility':"hidden", 'transform':'translateX(-200%)'})		
 	}
 
-
-	////////// FIN ANIM NOSOTROS
-
-
-	/////////// INI ANIM SERVICIOS
-
-	$contenedor = $('#cont-servicios')
-	ancho_contenedor = parseFloat($contenedor.css('height').replaceAll('px'))
-
-
-	if((posicion_scroll >= (offset_contenedores[1] ) && posicion_scroll < ($contenedor.offset().top) + ancho_contenedor)){
-
-		$contenedor.css({'visibility':"visible", 'transform':'translateX(0%)'})
-
-	}else{
-		$contenedor.css({'visibility':"hidden", 'transform':'translateX(-200%)'})
+	if(contenedor.attr('id') == 'cont-nosotros'){
+		//if(contenedor.attr('value') == '0'){window.scrollTo(0, contenedor.offset().top)}
+		anim_contador()
 	}
 
-
-	////////// FIN ANIM SERVICIOS
-
-
-	/////////// INI ANIM PROYECTOS
-
-	
-
-	$contenedor = $('#cont-proyectos')
-	ancho_contenedor = parseFloat($contenedor.css('height').replaceAll('px'))
+}
 
 
-	if((posicion_scroll >= (offset_contenedores[2] + ancho_contenedor/2) )){
+function anim_contador(){
+
+	let $cont_contadores = $('.num-contador')
+
+	let $elem_padre = $($cont_contadores[0]).parents('div')
+	$elem_padre = $($elem_padre[$elem_padre.length-1])		
+
+	for(let i=0; i<$cont_contadores.length;i++){
+
+		let contador = 0
+		let fin_contador = 0
+
+		let signo_ini 
+		let signo_fin 
+
+		if($($cont_contadores[i]).text().includes('+')){
+			signo_ini = '+'
+		}else{
+			signo_ini = ''
+		}
+
+		if($($cont_contadores[i]).text().includes('%')){
+			signo_fin = '%'
+		}else{
+			signo_fin = ''
+		}		
+
+		fin_contador = parseFloat($($cont_contadores[i]).attr('value'))
+		
+		//if($elem_padre.offset().left == 0){			
+
+		if($elem_padre.attr('value') == '0'){
+
+			let sec = setInterval(function(){
+
+				contador+=1
+
+				if(contador <= fin_contador){
+					$($cont_contadores[i]).text(signo_ini + (contador) + signo_fin)
+				}else{				
+					clearInterval(sec)
+				}
+
+			},30)
+		}
 
 
-		$contenedor.css({'visibility':"visible", 'transform':'translateX(0%)'})
+		if(i==$cont_contadores.length-1){
 
-	}else{
+			$elem_padre.attr('value', '1')
+		}
 
-		$contenedor.css({'visibility':"hidden", 'transform':'translateX(-200%)'})		
+		if($elem_padre.offset().left < 0){ //}else{
+
+			$($cont_contadores[i]).text(signo_ini + '0' + signo_fin)
+			$elem_padre.attr('value', '0')
+
+		}else{
+
+			$elem_padre.attr('value', '1')
+		}
+
 	}
-
-	////////// FIN ANIM PROYECTOS
-
-
-	
-
-
 }
