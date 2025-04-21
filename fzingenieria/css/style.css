@@ -92,7 +92,7 @@ nav{
 .secciones{
 	padding-top:120px;
 	width:100vw !important;
-	transition:1.2s;
+	transition:0.8s;
 	transition-timing-function: ease-out;
 }
 

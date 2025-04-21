@@ -72,10 +72,11 @@ function anim_seccion(contenedor, offset){
 	let posicion_scroll = $(window).scrollTop()
 
 	let $contenedor = contenedor
-	let ancho_contenedor = parseFloat($contenedor.css('height').replaceAll('px'))
+	let alto_contenedor = parseFloat($contenedor.css('height').replaceAll('px'))
 
+	console.log(posicion_scroll,offset_contenedores[offset], $contenedor.offset().top,  alto_contenedor)
 
-	if((posicion_scroll >= (offset_contenedores[offset] ) && posicion_scroll < ($contenedor.offset().top) + ancho_contenedor)){
+	if(posicion_scroll >= (offset_contenedores[offset] ) && posicion_scroll <= ($contenedor.offset().top) + alto_contenedor){
 
 		
 		$contenedor.css({'visibility':"visible", 'transform':'translateX(0%)'})
