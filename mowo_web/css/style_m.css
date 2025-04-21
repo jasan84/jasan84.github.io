@@ -1,0 +1,75 @@
+
+.obt{
+	transform:scale(0.5) translate(-50%, -50%) ;
+	width:200px;
+	height:200px;
+	overflow:hidden;
+	border:solid 1px black;
+	/*margin:20px;*/
+	padding:0;
+	border-radius:100%;
+	position:relative;
+	background-repeat: no-repeat;
+	background-size: 55%;
+	background-position:center;
+	display:inline-block;
+}
+
+#obt_naranja{
+	background-color:rgb(40,150,188);
+}
+
+#obt_azul{
+	background-color:rgb(226,93,19);
+}
+
+.cont_paleta{
+	width:50%;
+	/*border:solid 1px black;*/
+	position:absolute;
+	margin:0;
+	padding:0;
+
+}
+
+.cont_paleta img{
+	width:150%;
+	box-shadow: 10px 10px -10px black;
+}
+
+#cont_paleta_1{
+	transform:rotate(300deg);
+	top:-36px;
+	left:21px;
+}
+
+#cont_paleta_2{
+	right:-2px;
+	top:-29px;
+}
+
+#cont_paleta_3{
+	transform:rotate(60deg);
+	bottom:25px;
+	right:-30px;
+}
+
+#cont_paleta_4{
+	transform:rotate(120deg);
+	bottom:-40px;
+	right:18px;
+}
+
+#cont_paleta_5{
+	transform:rotate(180deg);
+	bottom:-30px;
+	left:5px;
+}
+
+#cont_paleta_6{
+	transform:rotate(240deg);
+	bottom:45px;
+	left:-30px;
+}
+
+
