@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 html{
 	font-size: 24px;
 	scroll-behavior: smooth;
@@ -445,4 +446,453 @@ textarea{
 
 @media only screen and (min-width: 992px) {...}
 
+=======
+html{
+	font-size: 24px;
+	scroll-behavior: smooth;
+}
+
+body{
+	margin:0px;
+	padding:0px;
+	max-width: 100vw;
+	background-image: linear-gradient(0deg, #b6cef2, #b6cef2,rgb(226,93,19),rgb(226,93,19),rgb(226,93,19));
+	
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+	
+}
+
+
+a{
+	text-decoration: none;
+	color:white;
+}
+
+header{
+	top:0;
+	border:solid 2px black;
+	max-width:100vw;
+	height: 150px;
+	padding:40px 0px;
+	height: fit-content;
+}
+
+#cont-logo{
+	border-radius: 100%;
+	background-color:#b6cef2;
+	width: 100px;
+	height: 100px;
+	margin:auto;
+	padding:15px;
+	align-items: center;
+	align-content: center;
+}
+
+
+nav{
+	color:white;	
+	margin:auto;
+}
+
+#botonera-nav{
+	display:flex;
+	flex-direction:row;
+	flex-wrap: wrap;
+	padding:0px;
+	justify-content: space-evenly;
+
+}
+
+.boton-nav{
+	font-size: 1rem;
+	display:inline-block;
+	margin:10px;
+	transition:0.3s ease-in-out;
+}
+
+.contenedor{	
+	max-width:100vw;
+	height: 100vh;
+	/*border:solid 2px black;*/
+	padding-top:100px;
+}
+	
+#cont-somos{
+	background-image:url('../img/patron_triangulos2.png');
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:top;	
+	display:flex;
+	flex-direction: row;
+	flex-wrap:nowrap;
+	padding:0px;
+	width: fit-content;
+
+}
+
+#cont-img-somos{
+	display:inline-block;
+	height:100%;
+	width: 20%;
+	overflow:hidden;
+	transition:1s ease;
+	align-content: center;
+}
+
+#m-somos{
+		margin:auto;
+		width:80%;
+		height: fit-content;
+}
+
+#m-logo-svg{
+	transition:10s ease;
+	stroke:black;
+	stroke-width:10px;
+	filter:drop-shadow(5px 30px 5px rgba(0,0,0,0.8))
+}
+
+
+#cont-texto-somos{
+	width: 60%;
+	height: 100%;
+	margin:auto;
+	text-align: center;
+	color: white;
+	transition:1s ease;
+}
+
+#cont-titulo-somos{
+	display:flex;
+	flex-direction:row;
+	justify-content: stretch;
+	flex-wrap:nowrap;
+	margin:80px 0px;	
+	width: 20%;
+}
+
+.titulo-somos{
+	display:inline-block;
+	font-size:4rem;
+	transition:0.5s ease-out;
+
+}
+
+
+h3{
+	font-size:3.5rem;
+	margin:0px 20px 20px 20px;
+	font-family: "Montserrat", sans-serif;
+	color:white;
+}
+
+
+#cont-texto-somos p{
+	font-size:1.5rem;
+	width:100%;
+	margin:0px;
+}
+
+
+#cont-hacemos{	
+	color:white;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:right;
+	position:relative;
+}
+
+
+#m-hacemos{
+	position:absolute;
+	width:100%;
+	height: 100%;
+	top:0;
+	left:0;
+	margin:0px;
+	z-index:-1;
+	/*background-image: url('../img/colors-balls.gif');	*/
+	background-image: url('../img/color-wheel.gif');
+	background-size:cover;
+	background-position:center;
+
+}
+
+#m-hacemos img{
+	position:absolute;
+	width: 100%;
+	height: 100%;
+}
+
+
+
+#cont-hicimos{
+	display:flex;
+	flex-direction: column;
+	background-image:url('../img/engranajes.png');
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:bottom;
+	height: 100vh;
+	/*padding-top:20px;*/
+	color:white;
+}
+
+#cont-titulos-hicimos{
+	display:flex;
+	flex-direction:row;
+	flex-wrap: nowrap;
+	justify-content: center;
+}
+
+
+.acceso-tarjeta-hicimos{
+	position:relative;
+	margin:0px;
+	width:10rem;
+	height: 2rem;
+	overflow:hidden;
+	transition:0.5s ease-in-out;
+	border-radius: 0px 0px 20px 20px;
+	background-color:#b6cef2;
+}
+
+.acceso-tarjeta-hicimos h4{
+	position:absolute;
+	right:15px;
+	margin:0px;
+	color:white;
+	font-size:1.5rem;
+	z-index: 1;
+	
+}
+
+.svg-hicimos{
+	display:inline-block;
+	position:absolute;
+	width: 50%;
+	aspect-ratio: 1;
+	left:0;
+	z-index:1;
+	fill:none;
+	stroke:#ea982d;
+	stroke-width: 15px;
+	transition:1s ease;
+}
+
+#cont-ppal-detalle-hicimos{
+	max-width:100vw;
+	height: 80%;
+	align-content: center;
+	text-align: center;
+}
+
+.cont-detalle-hicimos{
+	width:80%;
+	height:80%;
+	display:none;
+	box-shadow: 0px 0px 20px black;
+  transition: 0.3s;
+  opacity: 0;
+  /*display:flex;*/
+  flex-direction:row;
+  flex-wrap:wrap;
+  margin: auto;
+  justify-content: space-around;
+  align-items: center;
+  overflow: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+.cont-detalle-hicimos::-webkit-scrollbar {
+  display: none;
+}
+
+
+.img-hicimos{
+	max-width: 45%;
+	max-height: 80%;
+	margin-top:20px;
+}
+
+.texto-hicimos{
+	padding:10px;
+	border-radius: 20px;
+	background-color:rgba(226,93,19,0.9);
+	max-width: 50%;
+	font-size:1.1rem;
+}
+
+#cont-dijeron{
+	background-image:url('../img/testimonios.png');
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:top;
+	height: 50vh;
+}
+
+
+#cont-estamos{
+	height: fit-content;
+	align-content: center;
+}
+
+#cont-contacto{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin:20px;
+}
+
+#cont-form{
+	width:80vw;
+}
+
+#cont-form form{
+	border:solid 1px black;
+	display:flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: nowrap;
+	text-align: center;
+	border-radius: 0px 50px 0px 50px;
+	background-image: url('../img/acuarela.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.cont-parte-form{
+	margin:10px;
+	min-width: 45%;
+}
+
+#cont-ico{
+	border:solid 1px black;
+	display: inline-block;
+	background-image: url('../img/acuarela.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position-x:right;
+	background-position-y: top;
+
+	display:flex;
+	flex-direction: column;
+
+	width: 40px;
+	padding:5px;
+	border-radius: 50px 0px 0px 0px;
+}
+
+.ico-contacto{
+	display:inline-block;
+	width:100%;
+	aspect-ratio: 1;
+	margin:auto 0px;
+}
+
+.ico-contacto img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+input{
+	font-size: 20px;
+	height: 30px;
+	min-width: 50%
+}
+
+textarea{
+	font-size:18px;
+	min-height: 70px;
+	width: 100%
+}
+
+#fsumbit{
+	font-size:15px;
+	height: 50px;
+	min-width:40%;
+
+}
+
+
+
+
+
+
+/*//////////////////////////////////////////////*/
+
+@media only screen and (max-width: 1200px) {
+	html{
+		font-size:12px;
+	}
+
+	p{
+		font-size: 2rem !important;
+	}
+
+	.boton-nav{
+		font-size:2rem;
+	}
+
+/*
+	#cont-titulo-somos{
+
+		transform:translateX(-120%);
+	}
+	*/
+
+	#cont-texto-somos{
+		transform:translateX(-20%);
+	}
+
+	h3{
+		font-size: 3.5rem;
+	}
+
+	.carousel{
+		width: 90% !important;
+		height: 90% !important;
+		align-self: anchor-center !im;
+	}
+
+	.texto_contenido_carr3 p{
+		font-size:1.8rem !important;
+	}
+
+	.acceso-tarjeta-hicimos{
+		/*width:20%;*/
+		margin:0px;
+	}
+	.acceso-tarjeta-hicimos h4{
+		font-size:1.2rem;
+		bottom:15%;
+	}
+
+	.cont-detalle-hicimos{
+		width:90%;
+		height: 85%;
+	}
+
+	.img-hicimos{
+		max-width: 90% !important;
+	}
+
+	.texto-hicimos{
+		max-width: 90% !important;
+	}
+
+}
+
+@media only screen and (min-width: 600px) {...}
+
+@media only screen and (min-width: 768px) {...}
+
+@media only screen and (min-width: 992px) {...}
+
+>>>>>>> a92d9f521d2afc83be77ad0970a147e4fc909dec
 @media only screen and (min-width: 1200px) {...}
