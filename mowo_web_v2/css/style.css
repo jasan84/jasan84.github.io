@@ -1,0 +1,214 @@
+@font-face {
+    font-family: 'lato';
+    src: url('assets/fonts/lato/Lato-regular.ttf')
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+html{
+
+	scrollbar-width: none;
+}
+body{
+
+	max-width: 100vw;
+	margin:0px;
+	padding:0px;
+	font-family: 'lato';
+}
+
+.contenedor{
+	display:flex;
+	flex-wrap:wrap;
+}
+
+
+header{
+	width: 60%;
+	height: 40px;
+	padding:20px 40px;
+	position:sticky;
+	float:left;
+	top:10px;
+	left:20%;
+	display:flex;
+	justify-content: space-between;
+	background-color:rgba(0,0,0,0.2);
+	border-radius: 20px;
+	align-items: center;
+}
+
+
+#cont-logo{
+	margin-right:50px;
+}
+
+
+#cont-logo svg{
+	min-width: 90px;
+}
+
+
+header svg .cls-1, #logo-portada svg .cls-1{
+	fill:white;
+
+}
+
+nav{	
+	width:80%;
+	display:flex;
+	justify-content:space-between;
+	flex-wrap: wrap;
+}
+
+nav a{
+	margin-left:auto;
+	font-size:clamp(14px, 1.2rem, 24px);
+	color:white;
+	text-decoration:none;
+}
+
+section{
+	width: 100vw;
+	height: 100vh;
+	margin:0px;
+	padding-top:120px;
+}
+
+
+#portada{
+	background-color:black;
+	background-image:url("../assets/img/retina.png");
+	background-position: center;
+	background-repeat:no-repeat;
+}
+
+#logo-portada{
+	width:50%;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%, -50%);
+}
+
+.cont-descripcion-seccion{
+	height: 30%;
+	width: 80%;
+	margin:auto;
+}
+
+#portfolio{
+	background-color:white;
+}
+
+.cont-portfolio{
+	/*border:dashed 0.5px black;*/
+}
+
+
+#cont-descripcion-portfolio{
+	width: 80%;
+	height: fit-content;
+	margin:auto;
+	font-size:clamp(24px, 3rem, 5vw);
+	font-weight: bold;
+	text-align:center;
+	align-content: space-evenly;
+}
+
+#cont-descripcion-portfolio p{
+	margin:15px 0px;
+}
+
+#cont-portada-portfolio{
+	max-width: 80%;
+	height: 50vh;
+	margin:auto;
+	flex-wrap: wrap;
+}
+
+#cont-titulo-portfolio{
+	flex-direction:column;
+	align-items: center;
+	justify-content: center;
+	overflow:hidden;
+	width:40%;
+}
+
+#titulo-portfolio-1 svg .cls-1{
+	fill:none;
+	stroke-width: 0.2px;
+}
+
+#titulo-portfolio-2 svg .cls-1{
+	stroke-width: 2px;
+}
+
+#titulo-portfolio-3 svg .cls-1{
+	stroke-width: 2px;
+	fill:black;
+}
+
+ .titulo-portfolio{
+ 	width: 85%;
+    max-height: 30%;
+ 	margin:0px;
+ }
+
+ #img-portada-portfolio{
+ 	background-image:url("../assets/img/img-portada-portfolio.png");
+ 	background-size:contain;
+ 	background-position:center;
+ 	background-repeat: no-repeat;
+	width:60%;
+	height: 100%;
+ }
+
+#cont-galeria-portfolio{
+	width: 80%;
+	height: 50vh;
+	flex-direction: column;
+	margin:40px auto;
+	background-color:white;
+	align-content: center;
+    justify-content: space-around;
+}
+
+.cont-item-galeria-portfolio{
+	border:dashed 1px black;
+	margin:10px;
+}
+
+#cont-item-galeria-portfolio-1{
+	width: 15%;
+	height: 100%;
+}
+
+#cont-item-galeria-portfolio-2{
+	width: 12%;
+	aspect-ratio: 0.7;
+}
+
+
+#cont-item-galeria-portfolio-3{
+	width: 12%;
+	aspect-ratio: 1.5;
+}
+
+
+#cont-item-galeria-portfolio-4{
+	width: 15%;
+	aspect-ratio: 1;
+}
+
+
+#cont-item-galeria-portfolio-5{
+	width: 10%;
+	aspect-ratio: 1;
+}
+
+#cont-item-galeria-portfolio-6{
+	width: 20%;
+	height: 100%;
+}
