@@ -17,6 +17,17 @@ body{
 	font-family: 'lato';
 }
 
+
+.desactiva_scroll{
+	overflow:hidden;
+	height: 100%;
+}
+
+.activa_scroll{
+	overflow:auto;
+	height: auto;
+}
+
 .contenedor{
 	display:flex;
 	flex-wrap:wrap;
