@@ -1,17 +1,16 @@
 @font-face {
     font-family: 'lato';
-    src: url('assets/fonts/lato/Lato-regular.ttf')
+    src: url('../assets/fonts/lato/Lato-regular.ttf')
     font-weight: normal;
     font-style: normal;
 }
 
 
 html{
-
 	scrollbar-width: none;
+	scroll-behavior: smooth;
 }
 body{
-
 	max-width: 100vw;
 	margin:0px;
 	padding:0px;
