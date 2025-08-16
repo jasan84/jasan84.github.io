@@ -21,6 +21,8 @@ body{
 .contenedor{
 	display:flex;
 	flex-wrap:wrap;
+	border-radius: 20px;
+
 }
 
 
@@ -71,7 +73,7 @@ nav a{
 
 section{
 	width: 100vw;
-	height: 100vh;
+	min-height: 100vh;
 	margin:0px;
 	padding-top:120px;
 }
@@ -96,14 +98,15 @@ section{
 	height: 30%;
 	width: 80%;
 	margin:auto;
+	font-size:clamp(24px, 3rem, 5vw);
+	font-weight: bold;
+	text-align:center;
+	margin:50px auto;
 }
+
 
 #portfolio{
 	background-color:white;
-}
-
-.cont-portfolio{
-	/*border:dashed 0.5px black;*/
 }
 
 
@@ -111,15 +114,9 @@ section{
 	width: 80%;
 	height: fit-content;
 	margin:auto;
-	font-size:clamp(24px, 3rem, 5vw);
-	font-weight: bold;
-	text-align:center;
 	align-content: space-evenly;
 }
 
-#cont-descripcion-portfolio p{
-	margin:15px 0px;
-}
 
 #cont-portada-portfolio{
 	max-width: 80%;
@@ -139,10 +136,12 @@ section{
 #titulo-portfolio-1 svg .cls-1{
 	fill:none;
 	stroke-width: 0.2px;
+	stroke:black;
 }
 
 #titulo-portfolio-2 svg .cls-1{
 	stroke-width: 2px;
+	stroke:black;
 }
 
 #titulo-portfolio-3 svg .cls-1{
@@ -152,13 +151,13 @@ section{
 
  .titulo-portfolio{
  	width: 85%;
-    max-height: 30%;
+   max-height: 30%;
  	margin:0px;
  }
 
  #img-portada-portfolio{
  	background-image:url("../assets/img/img-portada-portfolio.png");
- 	background-size:contain;
+ 	background-size:cover;
  	background-position:center;
  	background-repeat: no-repeat;
 	width:60%;
@@ -172,43 +171,210 @@ section{
 	margin:40px auto;
 	background-color:white;
 	align-content: center;
-    justify-content: space-around;
+   justify-content: space-around;
 }
 
 .cont-item-galeria-portfolio{
-	border:dashed 1px black;
 	margin:10px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 #cont-item-galeria-portfolio-1{
 	width: 15%;
 	height: 100%;
+	background-image: url("../assets/img/armonica.jpg");
 }
 
 #cont-item-galeria-portfolio-2{
 	width: 12%;
 	aspect-ratio: 0.7;
+	background-image: url("../assets/img/callejon_caverna.jpg");
 }
 
 
 #cont-item-galeria-portfolio-3{
 	width: 12%;
 	aspect-ratio: 1.5;
+	background-image: url("../assets/img/callejon01.jpg");
 }
 
 
 #cont-item-galeria-portfolio-4{
 	width: 15%;
 	aspect-ratio: 1;
+	background-image: url("../assets/img/golden-colored-saxophone-close-up.jpg");
 }
 
 
 #cont-item-galeria-portfolio-5{
 	width: 10%;
 	aspect-ratio: 1;
+	background-image: url("../assets/img/guitar-gc0b16c86f_1920.jpg");
 }
 
 #cont-item-galeria-portfolio-6{
 	width: 20%;
 	height: 100%;
+	background-image: url("../assets/img/tunel_urban.jpg");
 }
+
+
+#servicios{
+	background-color:black;
+}
+
+#cont-desplegables-servicios{
+	color:white;
+}
+
+#cont-titulo-servicios{
+	width: 100%;
+	height: 90px;
+}
+
+.titulo-servicios{
+	height: 100%;
+	width: 500px;	
+}
+
+.titulo-servicios svg .cls-1{
+	height:100%;
+}
+
+#titulo-servicios-1 svg .cls-1{
+	stroke-width: 2px;
+}
+
+#titulo-servicios-2 svg .cls-1{
+	stroke-width: 0.5px;
+}
+
+#titulo-servicios-3 svg .cls-1{
+	fill: white;
+}
+
+#cont-descripcion-servicios p{
+	color:white;
+	font-size:clamp(24px, 2.5rem, 2vw);
+}
+
+.desplegable-servicios{
+	width: 80%;
+	height: 100%;
+	margin:auto;
+	flex-direction:row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.desplegable-servicios span{
+	cursor:pointer;
+}
+
+.desplegable-servicios hr{
+	width: 100%;
+	height: 2px;
+	background-color: white;
+}
+
+.desplegable-servicios h4, .desplegable-servicios span{
+	display:inline-block;
+	font-size:clamp(18px, 2.5rem, 3vw);
+}
+
+.cont-desplegado {
+	flex-direction: row;	
+	height: 25vh;
+	justify-content: space-around;
+	align-items: center;
+	padding:20px 0px;
+}
+
+.img-desplegable{
+	width: 30%;
+	height: 100%;
+	display:inline-block;
+	border:dotted 1px white;
+}
+
+.cont-descripcion-desplegable{
+	width: 50%;
+}
+
+.descripcion-desplegable{
+	font-size:clamp(18px, 1.5rem, 1.2vw);
+	text-align: center;
+}
+
+#desplegado-aspl{
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	height: fit-content;
+	padding:0px;
+	margin:0px;
+}
+
+#desplegado-aspl h5{
+	font-size:clamp(14px, 1.2rem, 2vw);
+	margin:0px;
+}
+
+
+#desplegado-aspl .cont-descripcion-desplegable{
+	width: 90%;
+	margin:15px 0px;
+}
+
+
+#desplegado-aspl .descripcion-desplegable{
+	margin:0px;
+}
+
+
+#capacitaciones{
+	background-image: linear-gradient(to right, white ,white,  grey, black, black,  black);
+	/*background-image: url("../assets/img/armonica.jpg");*/
+	display:flex;
+	flex-direction:row;
+	height: 100vh;
+	width: 100vw;
+}
+
+#cont-capacitaciones{
+	width: 80%;
+	height: 90%;
+	justify-content: space-between;
+	margin:auto;
+}
+
+#img-capacitaciones{
+	width: 30%;
+	height: 50%;
+	border:dashed 1px black;
+}
+
+#cont-descripcion-capacitaciones{
+	width: 60%;
+	color:white;
+	margin:0px;
+}
+
+#titulo-descripcion-capacitaciones{
+	width: 50%;
+	margin:auto auto 80px auto;
+	text-align: right;
+}
+
+#descripcion-capacitaciones{
+	margin:0px;
+	font-size:clamp(14px, 2rem, 2.5vw);
+	mix-blend-mode: exclusion;
+}
+
+
+
+
+
