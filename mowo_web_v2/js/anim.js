@@ -5,6 +5,10 @@ $(document).ready(function(){
 	$(window).on('wheel', function(event){
 		anim_logo_portada(event)
 	})
+
+	$(window).on('scroll', function(event){
+		anim_logo_portada(event)
+	})
 })
 
 function anim_logo_portada(event){
@@ -17,9 +21,9 @@ function anim_logo_portada(event){
 
 	if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
     // Scroll up
-		$tamanio_logo_portada = $tamanio_logo_portada / 5
+		$tamanio_logo_portada = $tamanio_logo_portada / 2
 		$('body').removeClass('desactiva_scroll')
-		$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) + 0.05)
+		$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) + 0.03)
 	}
 	else {
 	    // Scroll down
@@ -30,13 +34,13 @@ function anim_logo_portada(event){
 
 	if($tamanio_logo_portada < 50){$tamanio_logo_portada = 50}
 
-	if($($logo_portada).width() >= $('body').width()*2){
+	if($($logo_portada).width() >= $('body').width()*3){
 		$('body').removeClass('desactiva_scroll') 
 		$($logo_portada).css('display', 'none')
 	}else{
 		$($logo_portada).css('display', 'block')
 	}
 
-	$logo_portada.css({'transition':'ease-in 0.5s', 'width': $tamanio_logo_portada+'%'})
+	$logo_portada.css({'transition':'ease-out 1s', 'width': $tamanio_logo_portada+'%'})
 
 }
