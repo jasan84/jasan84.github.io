@@ -10,9 +10,13 @@ $(document).ready(function(){
 		anim_logo_portada(event)
 	})
 
-	$(document).on('touchmove', function() { //touchmove works for iOS, I don't know if Android supports it
-  $(document).trigger('wheel');
-});
+	$(window).on('touchmove', function() { 
+  		$(window).trigger('wheel');
+	});
+
+	$(window).on('touchmove', function() { 
+  		$(window).trigger('scroll');
+	});
 })
 
 function anim_logo_portada(event){
