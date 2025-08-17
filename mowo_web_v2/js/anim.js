@@ -11,7 +11,7 @@ $(document).ready(function(){
 	})
 
 	$(document).on('touchmove', function() { //touchmove works for iOS, I don't know if Android supports it
-  $(document).trigger('mousewheel');
+  $(document).trigger('wheel');
 });
 })
 
@@ -22,7 +22,7 @@ function anim_logo_portada(event){
 	var $tamanio_logo_portada = $($logo_portada).width() / $($logo_portada).parent().width() *100	
 	
 	
-
+	console.log(event.deltaY)
 	if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
     // Scroll up
 		$tamanio_logo_portada = $tamanio_logo_portada / 2
