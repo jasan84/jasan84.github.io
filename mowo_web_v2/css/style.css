@@ -85,7 +85,7 @@ section{
 	width: 100vw;
 	min-height: 100vh;
 	margin:0px;
-	padding-top:120px;
+	padding-top:80px;
 }
 
 
@@ -94,6 +94,7 @@ section{
 	background-image:url("../assets/img/retina.png");
 	background-position: center;
 	background-repeat:no-repeat;
+	background-size:50%;	
 }
 
 #logo-portada{
@@ -239,14 +240,22 @@ section{
 	color:white;
 }
 
-#cont-titulo-servicios{
-	width: 100%;
+#banner-servicios{
+	display:flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+.cont-titulo-servicios{
+	min-width: 100vw;
 	height: 90px;
+	border:dotted 1px white;
 }
 
 .titulo-servicios{
 	height: 100%;
-	width: 500px;	
+	width: 33vw;	
+	margin:auto;
 }
 
 .titulo-servicios svg .cls-1{
@@ -272,7 +281,7 @@ section{
 
 .desplegable-servicios{
 	width: 80%;
-	height: 100%;
+	height: fit-content;
 	margin:auto;
 	flex-direction:row;
 	justify-content: space-between;
@@ -289,17 +298,29 @@ section{
 	background-color: white;
 }
 
-.desplegable-servicios h4, .desplegable-servicios span{
+.desplegable-servicios h4{
 	display:inline-block;
 	font-size:clamp(18px, 2.5rem, 3vw);
+	margin-left: 20px;
+}
+
+.controlador-desplegable-servicios{
+	display:inline-block;
+	font-size:clamp(24px, 3rem, 5vw);
+	margin-right: 20px;
+	transition:ease-in-out 0.5s;
 }
 
 .cont-desplegado {
 	flex-direction: row;	
 	height: 25vh;
+	width: 90%;
 	justify-content: space-around;
 	align-items: center;
 	padding:20px 0px;
+	margin-top:-50%;
+	visibility: hidden;
+	opacity: 0;
 }
 
 .img-desplegable{
@@ -323,8 +344,6 @@ section{
 	align-items: center;
 	text-align: center;
 	height: fit-content;
-	padding:0px;
-	margin:0px;
 }
 
 #desplegado-aspl h5{
@@ -383,6 +402,7 @@ section{
 	font-size:clamp(14px, 2rem, 2.5vw);
 	mix-blend-mode: exclusion;
 }
+
 
 
 
