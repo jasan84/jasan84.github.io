@@ -241,15 +241,17 @@ section{
 }
 
 #banner-servicios{
+	position:relative;
 	display:flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
+	left:0%;
 }
 
 .cont-titulo-servicios{
 	min-width: 100vw;
 	height: 90px;
-	border:dotted 1px white;
+	position:relative;
 }
 
 .titulo-servicios{

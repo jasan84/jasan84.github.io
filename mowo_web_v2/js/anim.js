@@ -160,20 +160,99 @@ function toggle_tarjeta_servicios(elem){
 
 function desplaza_banner_servicios(){
 
-
 	let indice = 0
 
+	let $titulos = [$('.cont-titulo-servicios')[0], $('.cont-titulo-servicios')[1]]
+
+
+	tiempo = 20000
+
 	setInterval(function(){
-		$('#banner-servicios').css({'transition':'linear 5s', 'transform':'translateX(-400%)'})
+
+		let pos_final = parseFloat($('.cont-titulo-servicios').css('width').replace('px', ''))
+		let pos_vuelta = 100
+
+		/*if(indice == 1){
+			pos_final = pos_final *2
+			pos_vuelta = pos_vuelta *2
+		}*/
+
+		$($('.cont-titulo-servicios')[0]).css({'transition':'linear ' + tiempo/1000 + 's', 'left':'-100%'})
 
 		setTimeout(function(){
+			$($('.cont-titulo-servicios')[1]).css({'transition':'linear ' + (tiempo/1000) + 's', 'left':'-200%'})
+		}, tiempo/2 )
+		
+			
+			if(parseFloat($($('.cont-titulo-servicios')[0]).css('left').replace('px')) <= pos_final*(-1)){
 
-		$($('.cont-titulo-servicios')[indice]).css({'transform':'translateX(100%)'})
-		})
+				$($('.cont-titulo-servicios')[0]).css({'left': pos_vuelta + '%','transition':'linear 0s'})
+			}
+			if(parseFloat($($('.cont-titulo-servicios')[1]).css('left').replace('px')) <= pos_final*(-2)){
+
+				$($('.cont-titulo-servicios')[1]).css({'left': '0%','transition':'linear 0s'})
+			}
+
+	
+		if(indice==0){indice=1}else{indice=0}
+	}, 10)
+
+
+		/*
+
+		$('.cont-titulo-servicios').css({'left':'0','transition':'linear ' + tiempo / 1000 + 's'})
+
+		let pos_actual = parseFloat($($('.cont-titulo-servicios')).css('left').replace('px', ''))		
+		let pos_final = 0
+
+		let ancho_titulos = parseFloat('-' + $($('.cont-titulo-servicios')).css('width'))
+
+		let pos_vuelta = ancho_titulos *-2
+
+		if(indice==0){pos_final = ancho_titulos/2}else{pos_final = ancho_titulos *2;pos_vuelta=pos_vuelta*2}
+
+		
+		$($('.cont-titulo-servicios')).css('left', pos_final)
+		let pos_titulos = parseFloat($($('.cont-titulo-servicios')).css('left').replace('px', ''))
+		
+		
+		console.log(parseFloat($($('.cont-titulo-servicios')).css('left').replace('px', '')), pos_final)
+		if(pos_titulos <= pos_final){
+			$($('.cont-titulo-servicios')[indice]).css('left', pos_vuelta)
+		}
 
 		if(indice==0){indice=1}else{indice=0}
 
+	},tiempo)
 
-	},5000)
+	*/
 
+	/*
+	let $titulos = $('.cont-titulo-servicios')
+
+	$($titulos).css('left', '0')
+
+	$('.cont-titulo-servicios').css('transition', '5s linear')
+
+
+	let indice = 0
+
+		setInterval(function(){
+
+			let pos_actual = parseFloat($($titulos).css('left').replace('px', ''))
+			let ancho_titulos = parseFloat('-' + $($titulos).css('width'))
+			$($titulos).css('left', ancho_titulos*2)
+			
+			console.log(pos_titulos,ancho_titulos)
+			if(pos_titulos <= ancho_titulos){
+				console.log($($('.cont-titulo-servicios')[indice]), $($('.cont-titulo-servicios')[indice]).css('left'))
+			}
+
+			
+		}, 5000)
+
+
+		if(indice==0){indice=1}else{indice=0}
+
+	*/
 }
