@@ -40,35 +40,59 @@ function anim_logo_portada(event){
 	var $tamanio_logo_portada = $($logo_portada).width() / $($logo_portada).parent().width() *100	
 	var transition
 	
-	if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
-    // Scroll up
-		anim_activa = false
-		$tamanio_logo_portada = $tamanio_logo_portada / 2
-		$('body').removeClass('desactiva_scroll')
-		$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) + 0.008)
-		transition = 1
-	}
-	else {
-	    // Scroll down
-		$tamanio_logo_portada = $tamanio_logo_portada * 2
-		$('body').addClass('desactiva_scroll')
-		$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) - 0.01)
-		transition = 1
-	}
+	if($(window).scrollTop() <= $('#portada').height()){
 
-	if($tamanio_logo_portada < 50){$tamanio_logo_portada = 50}
+	
+		if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
+	    // Scroll up
+			anim_activa = false
+			$tamanio_logo_portada = $tamanio_logo_portada / 3
+			
+			if($tamanio_logo_portada < 50){$tamanio_logo_portada = 50}
+			
+			$('body').removeClass('desactiva_scroll')
+			$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) + 0.008)
+			transition = 1
+		}
+		else {
+		    // Scroll down
 
-	if($($logo_portada).width() >= $('body').width()*3){
-		anim_activa = true
-		$('body').removeClass('desactiva_scroll') 
-		$($logo_portada).css('display', 'none')
+			$('body').addClass('desactiva_scroll')
+			$tamanio_logo_portada = $tamanio_logo_portada * 2
+
+			$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) - 0.01)
+
+			if($($logo_portada).width() >= $('body').width()*3){
+				anim_activa = true
+				$('body').removeClass('desactiva_scroll') 
+				$($logo_portada).css('display', 'none')
+			}else{
+				$($logo_portada).css('display', 'block')
+			}
+			/*$('body').addClass('desactiva_scroll')
+			$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) - 0.01)*/
+			transition = 1
+		}
+
+		/*
+		if($tamanio_logo_portada < 50){$tamanio_logo_portada = 50}
+
+		if($($logo_portada).width() >= $('body').width()*3){
+			anim_activa = true
+			$('body').removeClass('desactiva_scroll') 
+			$($logo_portada).css('display', 'none')
+		}else{
+			$($logo_portada).css('display', 'block')
+		}
+		*/
+
+		if(!anim_activa){
+
+			$logo_portada.css({'transition':'ease-out '+transition+'s', 'width': $tamanio_logo_portada+'%'})
+		}
 	}else{
-		$($logo_portada).css('display', 'block')
-	}
 
-	if(!anim_activa){
-
-		$logo_portada.css({'transition':'ease-out '+transition+'s', 'width': $tamanio_logo_portada+'%'})
+			$('body').removeClass('desactiva_scroll') 
 	}
 
 }
@@ -81,8 +105,6 @@ async function anim_seccion(contenedor, offset){
 	let $contenedor = contenedor
 	let alto_contenedor = parseFloat($contenedor.css('height').replaceAll('px'))
 	let $elems = $('.titulo-portfolio')
-
-	//console.log(posicion_scroll,offset_contenedores[offset], $contenedor.offset().top,  alto_contenedor)
 
 	function sleep(ms) {
 		return new Promise(resolve => setTimeout(resolve, ms));
@@ -158,101 +180,81 @@ function toggle_tarjeta_servicios(elem){
 
 }
 
+
 function desplaza_banner_servicios(){
 
-	let indice = 0
+	let velocidad = 1.5
+	let $elementos_desplaza = $('.cont-titulo-servicios')
+	let ancho_elem_desplaza = parseFloat($($elementos_desplaza).css('width').replace('px','')) 
+	let posicion_desplaza1 = (ancho_elem_desplaza)
+	let posicion_desplaza2 = posicion_desplaza1
 
-	let $titulos = [$('.cont-titulo-servicios')[0], $('.cont-titulo-servicios')[1]]
+	function anim() {
+
+				
+			posicion_desplaza1-= velocidad
+			posicion_desplaza2-= velocidad
+
+			$($elementos_desplaza[0]).css({'opacity':'1','transform':`translateX(${posicion_desplaza1}px`})
+			$($elementos_desplaza[1]).css({'opacity':'1','transform':`translateX(${posicion_desplaza2}px`})
 
 
-	tiempo = 20000
+			if($($elementos_desplaza[0]).offset().left <= ancho_elem_desplaza*(-1)){
 
-	setInterval(function(){
+				$($elementos_desplaza[0]).css({'opacity':'0', 'transform':`translateX(${0}px`})
 
-		let pos_final = parseFloat($('.cont-titulo-servicios').css('width').replace('px', ''))
-		let pos_vuelta = 100
+				posicion_desplaza1 = ancho_elem_desplaza
+			}
 
-		/*if(indice == 1){
-			pos_final = pos_final *2
-			pos_vuelta = pos_vuelta *2
-		}*/
+			if($($elementos_desplaza[1]).offset().left <= ancho_elem_desplaza*(-1)){
 
-		$($('.cont-titulo-servicios')[0]).css({'transition':'linear ' + tiempo/1000 + 's', 'left':'-100%'})
+				$($elementos_desplaza[1]).css({'opacity':'0', 'transform':`translateX(${ancho_elem_desplaza*(-1)}px)`})
 
-		setTimeout(function(){
-			$($('.cont-titulo-servicios')[1]).css({'transition':'linear ' + (tiempo/1000) + 's', 'left':'-200%'})
-		}, tiempo/2 )
-		
+				posicion_desplaza2 = 0
+			}
+
+			requestAnimationFrame(anim)
+
+			/*
+			let indice = 0
+
+			let $titulos = [$('.cont-titulo-servicios')[0], $('.cont-titulo-servicios')[1]]
+
+
+			tiempo = 2000
+
+			setInterval(function(){
+
+				let pos_final = parseFloat($('.cont-titulo-servicios').css('width').replace('px', ''))
+				let pos_vuelta = 100
+
+
+				$($('.cont-titulo-servicios')[0]).css({'transition':'linear ' + tiempo/1000 + 's', 'left':'-100%'})
+
+				setTimeout(function(){
+					$($('.cont-titulo-servicios')[1]).css({'transition':'linear ' + (tiempo/1000) + 's', 'left':'-200%'})
+				}, tiempo/2 )
+				
+					
+					if(parseFloat($($('.cont-titulo-servicios')[0]).css('left').replace('px')) <= pos_final*(-1)){
+
+						$($('.cont-titulo-servicios')[0]).css({'left': pos_vuelta + '%','transition':'linear 0s'})
+					}
+					if(parseFloat($($('.cont-titulo-servicios')[1]).css('left').replace('px')) <= pos_final*(-2)){
+
+						$($('.cont-titulo-servicios')[1]).css({'left': '0%','transition':'linear 0s'})
+					}
+
 			
-			if(parseFloat($($('.cont-titulo-servicios')[0]).css('left').replace('px')) <= pos_final*(-1)){
-
-				$($('.cont-titulo-servicios')[0]).css({'left': pos_vuelta + '%','transition':'linear 0s'})
-			}
-			if(parseFloat($($('.cont-titulo-servicios')[1]).css('left').replace('px')) <= pos_final*(-2)){
-
-				$($('.cont-titulo-servicios')[1]).css({'left': '0%','transition':'linear 0s'})
-			}
-
-	
-		if(indice==0){indice=1}else{indice=0}
-	}, 10)
-
-
-		/*
-
-		$('.cont-titulo-servicios').css({'left':'0','transition':'linear ' + tiempo / 1000 + 's'})
-
-		let pos_actual = parseFloat($($('.cont-titulo-servicios')).css('left').replace('px', ''))		
-		let pos_final = 0
-
-		let ancho_titulos = parseFloat('-' + $($('.cont-titulo-servicios')).css('width'))
-
-		let pos_vuelta = ancho_titulos *-2
-
-		if(indice==0){pos_final = ancho_titulos/2}else{pos_final = ancho_titulos *2;pos_vuelta=pos_vuelta*2}
-
-		
-		$($('.cont-titulo-servicios')).css('left', pos_final)
-		let pos_titulos = parseFloat($($('.cont-titulo-servicios')).css('left').replace('px', ''))
-		
-		
-		console.log(parseFloat($($('.cont-titulo-servicios')).css('left').replace('px', '')), pos_final)
-		if(pos_titulos <= pos_final){
-			$($('.cont-titulo-servicios')[indice]).css('left', pos_vuelta)
+				if(indice==0){indice=1}else{indice=0}
+				
+			}, 0)
+			*/
+			
 		}
 
-		if(indice==0){indice=1}else{indice=0}
 
-	},tiempo)
+	anim()
 
-	*/
-
-	/*
-	let $titulos = $('.cont-titulo-servicios')
-
-	$($titulos).css('left', '0')
-
-	$('.cont-titulo-servicios').css('transition', '5s linear')
-
-
-	let indice = 0
-
-		setInterval(function(){
-
-			let pos_actual = parseFloat($($titulos).css('left').replace('px', ''))
-			let ancho_titulos = parseFloat('-' + $($titulos).css('width'))
-			$($titulos).css('left', ancho_titulos*2)
-			
-			console.log(pos_titulos,ancho_titulos)
-			if(pos_titulos <= ancho_titulos){
-				console.log($($('.cont-titulo-servicios')[indice]), $($('.cont-titulo-servicios')[indice]).css('left'))
-			}
-
-			
-		}, 5000)
-
-
-		if(indice==0){indice=1}else{indice=0}
-
-	*/
+	
 }
