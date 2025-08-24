@@ -31,13 +31,20 @@ $(document).ready(function(){
 	obtener_estilos()
 
 	desplaza_banner_servicios()
+
+ 	$(document).on('mousemove', (e) => {
+        // Update the position of the follower dot
+        $('#sigue-cursor').css('transform',`translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`);
+    });
 })
 
 function anim_logo_portada(event){
 
 
 	var $logo_portada = $('#logo-portada')
+	var $portada = $('#portada')
 	var $tamanio_logo_portada = $($logo_portada).width() / $($logo_portada).parent().width() *100	
+	//var tamanio_fondo_portada = 50
 	var transition
 	
 	if($(window).scrollTop() <= $('#portada').height()){
@@ -47,8 +54,10 @@ function anim_logo_portada(event){
 	    // Scroll up
 			anim_activa = false
 			$tamanio_logo_portada = $tamanio_logo_portada / 3
+			tamanio_fondo_portada = parseFloat($($portada).css('background-size').replace('%', '')) - 5
 			
 			if($tamanio_logo_portada < 50){$tamanio_logo_portada = 50}
+			if(tamanio_fondo_portada < 50){tamanio_fondo_portada = 50}
 			
 			$('body').removeClass('desactiva_scroll')
 			$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) + 0.008)
@@ -59,6 +68,7 @@ function anim_logo_portada(event){
 
 			$('body').addClass('desactiva_scroll')
 			$tamanio_logo_portada = $tamanio_logo_portada * 2
+			tamanio_fondo_portada = parseFloat($($portada).css('background-size').replace('%', '')) + 2
 
 			$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) - 0.01)
 
@@ -89,6 +99,7 @@ function anim_logo_portada(event){
 		if(!anim_activa){
 
 			$logo_portada.css({'transition':'ease-out '+transition+'s', 'width': $tamanio_logo_portada+'%'})
+			$portada.css('background-size', tamanio_fondo_portada + '%')
 		}
 	}else{
 
@@ -154,7 +165,7 @@ function toggle_tarjeta_servicios(elem){
 	//$(elem).siblings('.cont-desplegado').css({'margin-top':'-50%'})
 	if($(elem).siblings('.cont-desplegado').css('margin-top') == '0px'){
 		
-		$(elem).css({'transform':'rotate(0deg)'})
+		$(elem).find('span').css({'transform':'rotate(0deg)'})
 
 		$(elem).siblings('.cont-desplegado').css({'opacity':'0','transition':'0.5s'})
 		
@@ -167,7 +178,7 @@ function toggle_tarjeta_servicios(elem){
 	}else{
 		
 
-		$(elem).css({'transform':'rotate(-270deg)'})
+		$(elem).find('span').css({'transform':'rotate(-270deg)'})
 
 		$(elem).siblings('.cont-desplegado').css({'margin-top':'0%', 'transition':'0.3s', 'visibility':'visible'})
 		
