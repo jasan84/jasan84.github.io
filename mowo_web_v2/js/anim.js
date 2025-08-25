@@ -2,7 +2,26 @@ var ult_pos_scroll = 0
 var offset_contenedores = []
 var anim_activa = false
 
+var es_mobile = false
+
 $(document).ready(function(){
+
+	let info_dispositivo = navigator.userAgent.toUpperCase()
+
+	if(info_dispositivo.indexOf('ANDROID') != -1 || info_dispositivo.indexOf('MACINTOSH') != -1 || info_dispositivo.indexOf('IPAD') != -1 || info_dispositivo.indexOf('IPHONE') != -1){
+		
+		es_mobile =true
+	}
+
+	$(window).on('touchmove', function(event){
+		console.log($(window).scrollTop())
+		if($(window).scrollTop() == 0 ){		
+		
+			$('#logo-portada').css({'transition':'ease-out 1s', 'width': '50%'})
+			$('#portada').css({'opacity':'1','background-size':'50%'})
+		}
+
+	})
 
 	$(window).on('wheel', function(event){
 		anim_logo_portada(event)
@@ -18,11 +37,7 @@ $(document).ready(function(){
   		$(window).trigger('wheel');
 		anim_seccion($('#portfolio'), 1)
 	});
-
-	$(window).on('touchmove', function() { 
-  		$(window).trigger('scroll');
-		anim_seccion($('#portfolio'), 1)
-	});
+	
 
 	$('.controlador-desplegable-servicios').on('click', function(){
 		toggle_tarjeta_servicios(this)
@@ -36,7 +51,12 @@ $(document).ready(function(){
         // Update the position of the follower dot
         $('#sigue-cursor').css('transform',`translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`);
     });
+
 })
+
+function despliega_nav(){
+	
+}
 
 function anim_logo_portada(event){
 
@@ -46,11 +66,16 @@ function anim_logo_portada(event){
 	var $tamanio_logo_portada = $($logo_portada).width() / $($logo_portada).parent().width() *100	
 	//var tamanio_fondo_portada = 50
 	var transition
+
+
+	if(!es_mobile) {$('body').addClass('desactiva_scroll')}
 	
 	if($(window).scrollTop() <= $('#portada').height()){
 
 	
 		if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
+
+			//console.log(event.originalEvent.wheelDelta, event.originalEvent.detail)
 	    // Scroll up
 			anim_activa = false
 			$tamanio_logo_portada = $tamanio_logo_portada / 3
@@ -66,7 +91,7 @@ function anim_logo_portada(event){
 		else {
 		    // Scroll down
 
-			$('body').addClass('desactiva_scroll')
+			if(!es_mobile) {$('body').addClass('desactiva_scroll')}
 			$tamanio_logo_portada = $tamanio_logo_portada * 2
 			tamanio_fondo_portada = parseFloat($($portada).css('background-size').replace('%', '')) + 2
 
@@ -171,7 +196,7 @@ function toggle_tarjeta_servicios(elem){
 		
 		setTimeout(function(){
 
-			$(elem).siblings('.cont-desplegado').css({'margin-top':'-50%', 'transition':'2s', 'visibility':'hidden'})
+			$(elem).siblings('.cont-desplegado').css({'margin-top':'-150%', 'transition':'2s', 'visibility':'hidden', 'height':'5%'})
 
 		},100)
 
@@ -180,13 +205,13 @@ function toggle_tarjeta_servicios(elem){
 
 		$(elem).find('span').css({'transform':'rotate(-270deg)'})
 
-		$(elem).siblings('.cont-desplegado').css({'margin-top':'0%', 'transition':'0.3s', 'visibility':'visible'})
+		$(elem).siblings('.cont-desplegado').css({'margin-top':'0%', 'transition':'0.5s ease-in-out', 'visibility':'visible', 'height':'fit-content'})
 		
 		setTimeout(function(){
 			$(elem).siblings('.cont-desplegado').css({'opacity':'1','transition':'0.8s'})
 
 
-		},100)
+		},200)
 	}
 
 }

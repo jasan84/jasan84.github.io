@@ -10,6 +10,7 @@ html{
 	scrollbar-width: none;
 	scroll-behavior: smooth;
 	cursor: none;
+	max-width: 100vw;
 }
 body{
 	max-width: 100vw;
@@ -209,7 +210,7 @@ section{
 	margin:40px auto;
 	background-color:white;
 	align-content: center;
-   justify-content: space-around;
+  justify-content: space-around;
 }
 
 .cont-item-galeria-portfolio{
@@ -274,6 +275,7 @@ section{
 	flex-wrap: nowrap;
 	left:0%;
 	overflow: hidden;
+	align-items: center;
 }
 
 .cont-titulo-servicios{
@@ -330,14 +332,14 @@ section{
 
 .desplegable-servicios h4{
 	display:inline-block;
-	font-size:clamp(18px, 2.5rem, 3vw);
-	margin-left: 20px;
+	/*font-size:clamp(18px, 2.5rem, 3vw);*/
+	margin:10px 20px;
 }
 
 .controlador-desplegable-servicios{
 	width: 100%;
-	font-size:clamp(24px, 3rem, 5vw);
-	margin-right: 20px;
+	font-size:clamp(24px, 2.5rem, 5vw);
+	margin-top:20px;
 	/*cursor:pointer;*/
 	flex-direction: row;
 	justify-content: space-between;
@@ -356,14 +358,14 @@ section{
 	justify-content: space-around;
 	align-items: center;
 	padding:20px 0px;
-	margin-top:-50%;
+	margin-top:-150%;
 	visibility: hidden;
 	opacity: 0;
 }
 
 .img-desplegable{
 	width: 30%;
-	height: 100%;
+	aspect-ratio: 1;
 	display:inline-block;
 	border:dotted 1px white;
 }
@@ -437,7 +439,7 @@ section{
 
 #descripcion-capacitaciones{
 	margin:0px;
-	font-size:clamp(14px, 2rem, 2.5vw);
+	font-size:clamp(24px, 2rem, 2.5vw);
 	mix-blend-mode: exclusion;
 }
 
@@ -519,6 +521,197 @@ section{
 	font-size: clamp(20px, 1.5em, 3vw);
 	font-weight: bolder;
 	margin:2px;
+}
+
+
+@media(max-width: 600px){
+
+	#sigue-cursor{
+		display:none;
+	}
+
+	nav{
+		position:absolute;
+		display: flex;
+		flex-direction: column;
+		width: 90%;
+		border:solid 1px red;
+		top:80px;
+		background-color: white;
+		mix-blend-mode: normal;
+		display: none;
+	}
+
+	nav a{
+		margin:20px;
+		font-size: 40px;
+		color:black;
+	}
+
+	header{
+		margin:auto;
+		width: 100vw;
+		top:0;
+		padding:10px 0px;
+		border-radius: 0px;
+	}
+
+	#cont-logo{
+		margin:10px;
+	}
+
+	#titulo-portfolio-1, #titulo-portfolio-3{
+		display:none;
+	}
+
+	#cont-titulo-portfolio{
+		width: 100%;
+		height: fit-content;
+		flex-direction: row;
+		flex-wrap: nowrap;
+
+	}
+
+	.titulo-portfolio svg{
+		height: 100%; 	
+ 	}
+
+
+	#titulo-portfolio-1, #titulo-portfolio-3{
+		display:none;
+	}
+
+	 #img-portada-portfolio{
+	 	width: 100%;
+	 	height: 80%;
+	 }
+
+	#cont-galeria-portfolio{
+		margin:auto;
+		flex-direction: row;
+		flex-wrap: wrap;
+		height: fit-content;
+	}
+
+	.cont-item-galeria-portfolio{
+		width: 100% !important;
+		margin:0px;
+		border-radius: 0px;
+
+	}
+
+
+	#servicios{
+		/*height: fit-content;*/
+	}
+
+	.cont-titulo-servicios:nth-of-type(2){
+		display: none;
+	}
+
+	.cont-titulo-servicios{
+		height:90px;
+	}
+
+	.titulo-servicios svg{
+		height: 80%;
+	}
+
+	.titulo-servicios:nth-of-type(2), .titulo-servicios:nth-of-type(3){
+		display: none;
+	}
+
+
+	.desplegable-servicios{
+		width: 90%;
+		height: fit-content;
+		margin:auto;
+		justify-content: center;
+	}
+
+	.controlador-desplegable-servicios{
+		margin:0px;
+	}
+
+	.cont-descripcion-desplegable {
+		width: 90%;
+	}
+
+	.cont-desplegado{
+		flex-direction: column;
+		height: 5%;
+	}
+
+
+	#capacitaciones{
+
+		background-image: linear-gradient(to bottom, white ,white,  grey, black, black,  black);
+		height: fit-content;
+
+	}
+
+	#cont-capacitaciones{
+		flex-direction: column-reverse;
+		width: 90%;
+	}
+
+	#img-capacitaciones{
+		width: 100%;
+		aspect-ratio: 1;
+		border: dashed 2px grey;
+	}
+
+	#cont-descripcion-capacitaciones{
+		width: 100%;
+	}
+
+	#cont-descripcion-capacitaciones p{
+		margin-top:50px;
+	}
+
+
+	#titulo-descripcion-capacitaciones {
+		width: 100%;
+		text-align: center;
+		margin:auto;
+		font-size: 48px;
+		color:black;
+
+	}
+
+	#img-nosotros{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#cont-logo-nosotros{
+		width: 180px;
+		height: 180px;
+	}
+
+	#cont-logo-nosotros img{
+		width: 100%;
+		height: 100%;
+	}
+
+	#cont-redes-nosotros{
+		width: 90%;
+		margin-top:50px;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	.cont-img-redes-nosotros {
+		width: 80px;
+		height: 80px;
+	}
+	
+	#cont-detalle-nosotros p{
+		margin: 5px 0px;
+		text-align: justify;
+	}
+
+
 }
 
 
