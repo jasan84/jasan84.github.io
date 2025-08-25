@@ -14,11 +14,12 @@ $(document).ready(function(){
 	}
 
 	$(window).on('touchmove', function(event){
-		console.log($(window).scrollTop())
+
+
 		if($(window).scrollTop() == 0 ){		
 		
-			$('#logo-portada').css({'transition':'ease-out 1s', 'width': '50%'})
-			$('#portada').css({'opacity':'1','background-size':'50%'})
+			$('#logo-portada').css({'transition':'ease-out 1s', 'width': '100%'})
+			$('#portada').css({'opacity':'1','background-size':'100%'})
 		}
 
 	})
@@ -52,10 +53,43 @@ $(document).ready(function(){
         $('#sigue-cursor').css('transform',`translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`);
     });
 
+
+    if(es_mobile){
+
+    	$('nav').on('click', despliega_nav_mobile)
+    	$('nav').after('<span id="controlador-nav-mobile"></span>')
+    	$('#controlador-nav-mobile').on('click', despliega_nav_mobile)
+    }
+
 })
 
-function despliega_nav(){
-	
+function despliega_nav_mobile (){
+
+	let $nav = $('nav')
+	let displ = $nav.css('display')
+	let delay = 500
+
+	//console.log(displ)
+
+	if($($nav).css('opacity')  ==  '0'){    			
+		delay = 0
+		
+		setTimeout(function(){
+			$($nav).css('opacity', '1')
+		}, delay)
+		
+		$($nav).css('display', 'flex')
+
+	}else{
+		
+		$($nav).css('opacity', '0')
+		
+		setTimeout(function(){
+			$($nav).toggle()
+		}, delay)
+	}
+
+
 }
 
 function anim_logo_portada(event){
@@ -72,20 +106,28 @@ function anim_logo_portada(event){
 	
 	if($(window).scrollTop() <= $('#portada').height()){
 
-	
+		anim_activa = false
 		if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
 
-			//console.log(event.originalEvent.wheelDelta, event.originalEvent.detail)
 	    // Scroll up
+			$($logo_portada).css('display', 'block')
 			anim_activa = false
 			$tamanio_logo_portada = $tamanio_logo_portada / 3
 			tamanio_fondo_portada = parseFloat($($portada).css('background-size').replace('%', '')) - 5
+
+			if(!es_mobile){				
 			
-			if($tamanio_logo_portada < 50){$tamanio_logo_portada = 50}
-			if(tamanio_fondo_portada < 50){tamanio_fondo_portada = 50}
+				if($tamanio_logo_portada < 50){$tamanio_logo_portada = 50}
+				if(tamanio_fondo_portada < 50){tamanio_fondo_portada = 50}
+			}else{
+
+			
+				if($tamanio_logo_portada < 90){$tamanio_logo_portada = 90}
+				if(tamanio_fondo_portada < 100){tamanio_fondo_portada = 100}
+			}
 			
 			$('body').removeClass('desactiva_scroll')
-			$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) + 0.008)
+			$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) + 0.05)
 			transition = 1
 		}
 		else {
@@ -93,14 +135,15 @@ function anim_logo_portada(event){
 
 			if(!es_mobile) {$('body').addClass('desactiva_scroll')}
 			$tamanio_logo_portada = $tamanio_logo_portada * 2
-			tamanio_fondo_portada = parseFloat($($portada).css('background-size').replace('%', '')) + 2
+			tamanio_fondo_portada = parseFloat($($portada).css('background-size').replace('%', '')) +5
 
-			$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) - 0.01)
+			$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) - 0.05)
 
-			if($($logo_portada).width() >= $('body').width()*3){
-				anim_activa = true
+			if(parseFloat($('#portada').css('opacity')) <= 0){
+				//anim_activa = true
 				$('body').removeClass('desactiva_scroll') 
 				$($logo_portada).css('display', 'none')
+				anim_activa = true
 			}else{
 				$($logo_portada).css('display', 'block')
 			}
