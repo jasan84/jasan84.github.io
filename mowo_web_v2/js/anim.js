@@ -4,6 +4,9 @@ var anim_activa = false
 
 var es_mobile = false
 
+var pos_scrolly_ini;
+var dir_scrolly;
+
 $(document).ready(function(){
 
 	let info_dispositivo = navigator.userAgent.toUpperCase()
@@ -13,14 +16,21 @@ $(document).ready(function(){
 		es_mobile =true
 	}
 
+    $(document).on('touchstart', function(event) {
+        //pos_scrollx_ini = e.originalEvent.touches[0].clientX;
+        pos_scrolly_ini = event.originalEvent.touches[0].clientY
+    })
+
 	$(window).on('touchmove', function(event){
 
+        pos_scrolly_act = event.originalEvent.touches[0].clientY
 
-		if($(window).scrollTop() == 0 ){		
-		
-			$('#logo-portada').css({'transition':'ease-out 1s', 'width': '100%'})
-			$('#portada').css({'opacity':'1','background-size':'100%'})
-		}
+        if(pos_scrolly_ini > pos_scrolly_act){
+        	dir_scrolly = true // scroll up
+        }else if(pos_scrolly_ini < pos_scrolly_act){
+        	dir_scrolly = false // scrol down
+        
+        }
 
 	})
 
@@ -34,11 +44,12 @@ $(document).ready(function(){
 		anim_seccion($('#portfolio'), 1)
 	})
 
+/*
 	$(window).on('touchmove', function() { 
   		$(window).trigger('wheel');
 		anim_seccion($('#portfolio'), 1)
 	});
-	
+	*/
 
 	$('.controlador-desplegable-servicios').on('click', function(){
 		toggle_tarjeta_servicios(this)
@@ -69,8 +80,6 @@ function despliega_nav_mobile (){
 	let displ = $nav.css('display')
 	let delay = 500
 
-	//console.log(displ)
-
 	if($($nav).css('opacity')  ==  '0'){    			
 		delay = 0
 		
@@ -94,84 +103,89 @@ function despliega_nav_mobile (){
 
 function anim_logo_portada(event){
 
+	let pos_ini = $(window).scrollTop() 
 
-	var $logo_portada = $('#logo-portada')
-	var $portada = $('#portada')
-	var $tamanio_logo_portada = $($logo_portada).width() / $($logo_portada).parent().width() *100	
-	//var tamanio_fondo_portada = 50
-	var transition
+	console.log(dir_scrolly)
+
+	if(!es_mobile){
+		var $logo_portada = $('#logo-portada')
+		var $portada = $('#portada')
+		var $tamanio_logo_portada = $($logo_portada).width() / $($logo_portada).parent().width() *100	
+		//var tamanio_fondo_portada = 50
+		var transition
 
 
-	if(!es_mobile) {$('body').addClass('desactiva_scroll')}
-	
-	if($(window).scrollTop() <= $('#portada').height()){
+		if(!es_mobile) {$('body').addClass('desactiva_scroll')}
+		
+		if($(window).scrollTop() <= $('#portada').height()){
 
-		anim_activa = false
-		if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
-
-	    // Scroll up
-			$($logo_portada).css('display', 'block')
 			anim_activa = false
-			$tamanio_logo_portada = $tamanio_logo_portada / 3
-			tamanio_fondo_portada = parseFloat($($portada).css('background-size').replace('%', '')) - 5
+			if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0 || !dir_scrolly) {
 
-			if(!es_mobile){				
-			
-				if($tamanio_logo_portada < 50){$tamanio_logo_portada = 50}
-				if(tamanio_fondo_portada < 50){tamanio_fondo_portada = 50}
-			}else{
+		    // Scroll up
+				$($logo_portada).css('display', 'block')
+				anim_activa = false
+				$tamanio_logo_portada = $tamanio_logo_portada / 3
+				tamanio_fondo_portada = parseFloat($($portada).css('background-size').replace('%', '')) - 5
 
-			
-				if($tamanio_logo_portada < 90){$tamanio_logo_portada = 90}
-				if(tamanio_fondo_portada < 100){tamanio_fondo_portada = 100}
+				if(!es_mobile){				
+				
+					if($tamanio_logo_portada < 50){$tamanio_logo_portada = 50}
+					if(tamanio_fondo_portada < 50){tamanio_fondo_portada = 50}
+				}else{
+
+				
+					if($tamanio_logo_portada < 90){$tamanio_logo_portada = 90}
+					if(tamanio_fondo_portada < 100){tamanio_fondo_portada = 100}
+				}
+				
+				$('body').removeClass('desactiva_scroll')
+				$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) + 0.05)
+				transition = 1
 			}
-			
-			$('body').removeClass('desactiva_scroll')
-			$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) + 0.05)
-			transition = 1
-		}
-		else {
-		    // Scroll down
+			else {
+			    // Scroll down
 
-			if(!es_mobile) {$('body').addClass('desactiva_scroll')}
-			$tamanio_logo_portada = $tamanio_logo_portada * 2
-			tamanio_fondo_portada = parseFloat($($portada).css('background-size').replace('%', '')) +5
+				if(!es_mobile) {$('body').addClass('desactiva_scroll')}
+				$tamanio_logo_portada = $tamanio_logo_portada * 2
+				tamanio_fondo_portada = parseFloat($($portada).css('background-size').replace('%', '')) +5
 
-			$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) - 0.05)
+				$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) - 0.05)
 
-			if(parseFloat($('#portada').css('opacity')) <= 0){
-				//anim_activa = true
+				if(parseFloat($('#portada').css('opacity')) <= 0){
+					//anim_activa = true
+					$('body').removeClass('desactiva_scroll') 
+					$($logo_portada).css('display', 'none')
+					anim_activa = true
+				}else{
+					$($logo_portada).css('display', 'block')
+				}
+				/*$('body').addClass('desactiva_scroll')
+				$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) - 0.01)*/
+				transition = 1
+			}
+
+			/*
+			if($tamanio_logo_portada < 50){$tamanio_logo_portada = 50}
+
+			if($($logo_portada).width() >= $('body').width()*3){
+				anim_activa = true
 				$('body').removeClass('desactiva_scroll') 
 				$($logo_portada).css('display', 'none')
-				anim_activa = true
 			}else{
 				$($logo_portada).css('display', 'block')
 			}
-			/*$('body').addClass('desactiva_scroll')
-			$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) - 0.01)*/
-			transition = 1
-		}
+			*/
 
-		/*
-		if($tamanio_logo_portada < 50){$tamanio_logo_portada = 50}
+			if(!anim_activa){
 
-		if($($logo_portada).width() >= $('body').width()*3){
-			anim_activa = true
-			$('body').removeClass('desactiva_scroll') 
-			$($logo_portada).css('display', 'none')
+				$logo_portada.css({'transition':'ease-out '+transition+'s', 'width': $tamanio_logo_portada+'%'})
+				$portada.css('background-size', tamanio_fondo_portada + '%')
+			}
 		}else{
-			$($logo_portada).css('display', 'block')
+
+				$('body').removeClass('desactiva_scroll') 
 		}
-		*/
-
-		if(!anim_activa){
-
-			$logo_portada.css({'transition':'ease-out '+transition+'s', 'width': $tamanio_logo_portada+'%'})
-			$portada.css('background-size', tamanio_fondo_portada + '%')
-		}
-	}else{
-
-			$('body').removeClass('desactiva_scroll') 
 	}
 
 }
