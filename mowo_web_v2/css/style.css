@@ -224,7 +224,7 @@ section{
 	position:relative;
 }
 
-.grupo_elem_carr1{
+.grupo_elem_carr{
 	height: 100%;
 	position:absolute;
 	display: flex;
@@ -233,7 +233,7 @@ section{
 	transition: 2s;
 }
 
-.contenido_carr1{
+.contenido_carr{
 	height: 100%;
 	width: 100%;
 	background-size: cover;
