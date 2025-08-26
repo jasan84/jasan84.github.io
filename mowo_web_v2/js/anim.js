@@ -3,37 +3,70 @@ var offset_contenedores = []
 var anim_activa = false
 
 var es_mobile = false
+var dir_scrolly = true;
+var tamanio_pantalla = window.innerWidth
 
-var pos_scrolly_ini;
-var dir_scrolly;
+
+/*
+function limita_ejecuta(func, limite) {
+
+	
+	let en_ejec;
+  
+  	return function(...args) {
+    
+		console.log('lim')
+    	if (!en_ejec) {
+
+      		func.apply(this, args);
+      		en_ejec = true;
+      		setTimeout(() => (en_ejec = false), limite);
+		}
+
+		func(...args);
+	};
+}
+
+*/
+
 
 $(document).ready(function(){
 
 	let info_dispositivo = navigator.userAgent.toUpperCase()
 
-	if(info_dispositivo.indexOf('ANDROID') != -1 || info_dispositivo.indexOf('MACINTOSH') != -1 || info_dispositivo.indexOf('IPAD') != -1 || info_dispositivo.indexOf('IPHONE') != -1){
+	if(info_dispositivo.indexOf('ANDROID') != -1 || info_dispositivo.indexOf('MACINTOSH') != -1 || info_dispositivo.indexOf('IPAD') != -1 || info_dispositivo.indexOf('IPHONE') != -1 || tamanio_pantalla < 1024){
 		
 		es_mobile =true
 	}
 
-    $(document).on('touchstart', function(event) {
+
+	let pos_scrolly_ini
+	let pos_scrolly_fin
+
+    $(document).on('touchstart', function(e) {
         //pos_scrollx_ini = e.originalEvent.touches[0].clientX;
-        pos_scrolly_ini = event.originalEvent.touches[0].clientY
-    })
 
-	$(window).on('touchmove', function(event){
+		pos_scrolly_ini = e.changedTouches[0].clientY
+	    
+	    anim_logo_portada(event)
 
-        pos_scrolly_act = event.originalEvent.touches[0].clientY
+    })	
 
-        if(pos_scrolly_ini > pos_scrolly_act){
-        	dir_scrolly = true // scroll up
-        }else if(pos_scrolly_ini < pos_scrolly_act){
-        	dir_scrolly = false // scrol down
-        
-        }
+	$(document).on('touchend', function(event) {
+        //pos_scrollx_ini = e.originalEvent.touches[0].clientX;
+        pos_scrolly_fin = event.changedTouches[0].clientY
+        //pos_scrolly_fin
 
+	    if(pos_scrolly_ini > pos_scrolly_fin){
+	    	dir_scrolly = true // scroll up
+	    }else if(pos_scrolly_ini < pos_scrolly_fin){
+	    	dir_scrolly = false // scrol down
+	    
+	    }
+
+	    anim_logo_portada(event)
 	})
-
+    
 	$(window).on('wheel', function(event){
 		anim_logo_portada(event)
 		anim_seccion($('#portfolio'), 1)
@@ -44,12 +77,6 @@ $(document).ready(function(){
 		anim_seccion($('#portfolio'), 1)
 	})
 
-/*
-	$(window).on('touchmove', function() { 
-  		$(window).trigger('wheel');
-		anim_seccion($('#portfolio'), 1)
-	});
-	*/
 
 	$('.controlador-desplegable-servicios').on('click', function(){
 		toggle_tarjeta_servicios(this)
@@ -60,16 +87,44 @@ $(document).ready(function(){
 	desplaza_banner_servicios()
 
  	$(document).on('mousemove', (e) => {
-        // Update the position of the follower dot
+        
         $('#sigue-cursor').css('transform',`translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`);
     });
+
+	window.onresize = function(){
+
+		tamanio_pantalla = window.innerWidth
+
+		if(tamanio_pantalla < 1024){
+			
+			es_mobile = true
+
+			if(!$('#controlador-nav-mobile').length){
+
+	    		$('nav').after('<span id="controlador-nav-mobile"><img src="assets/img/ico/ham_menu.png" style="height:80%; margin-left:auto;"/></span>')
+			}
+
+	    	$('#controlador-nav-mobile').on('click', despliega_nav_mobile)    	
+    		$('nav a').on('click', despliega_nav_mobile)
+		}else{
+			es_mobile = false
+			$('nav').css({'display':'flex', 'opacity':'1'})
+	    	$('#controlador-nav-mobile').remove()
+	    	$('nav a').off('click', despliega_nav_mobile)
+	    	//$('#controlador-nav-mobile').on('click', despliega_nav_mobile)
+
+		}
+	}
 
 
     if(es_mobile){
 
-    	$('nav').on('click', despliega_nav_mobile)
-    	$('nav').after('<span id="controlador-nav-mobile"></span>')
-    	$('#controlador-nav-mobile').on('click', despliega_nav_mobile)
+		if(!$('#controlador-nav-mobile').length){
+
+    		$('nav').after('<span id="controlador-nav-mobile"><img src="assets/img/ico/ham_menu.png" style="height:80%; margin-left:auto;"/></span>')
+		}
+    	$('#controlador-nav-mobile').on('click', despliega_nav_mobile)    	
+    	$('nav a').on('click', despliega_nav_mobile)
     }
 
 })
@@ -105,22 +160,23 @@ function anim_logo_portada(event){
 
 	let pos_ini = $(window).scrollTop() 
 
-	console.log(dir_scrolly)
 
-	if(!es_mobile){
+	//if(!es_mobile){
 		var $logo_portada = $('#logo-portada')
 		var $portada = $('#portada')
 		var $tamanio_logo_portada = $($logo_portada).width() / $($logo_portada).parent().width() *100	
-		//var tamanio_fondo_portada = 50
+		
 		var transition
 
 
-		if(!es_mobile) {$('body').addClass('desactiva_scroll')}
+		//if(!es_mobile) {$('body').addClass('desactiva_scroll')}
 		
 		if($(window).scrollTop() <= $('#portada').height()){
+			
+			$('body').addClass('desactiva_scroll')
 
 			anim_activa = false
-			if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0 || !dir_scrolly) {
+			if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0 || dir_scrolly == false) {
 
 		    // Scroll up
 				$($logo_portada).css('display', 'block')
@@ -128,29 +184,50 @@ function anim_logo_portada(event){
 				$tamanio_logo_portada = $tamanio_logo_portada / 3
 				tamanio_fondo_portada = parseFloat($($portada).css('background-size').replace('%', '')) - 5
 
+				let increm_opacidad
+
 				if(!es_mobile){				
 				
 					if($tamanio_logo_portada < 50){$tamanio_logo_portada = 50}
 					if(tamanio_fondo_portada < 50){tamanio_fondo_portada = 50}
+
+					increm_opacidad = 0.05
+
 				}else{
 
-				
 					if($tamanio_logo_portada < 90){$tamanio_logo_portada = 90}
 					if(tamanio_fondo_portada < 100){tamanio_fondo_portada = 100}
+					
+					increm_opacidad = 0.3
 				}
 				
 				$('body').removeClass('desactiva_scroll')
-				$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) + 0.05)
+				$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) + increm_opacidad)
+
+				if(increm_opacidad > 1){increm_opacidad = 1}
 				transition = 1
 			}
 			else {
 			    // Scroll down
 
-				if(!es_mobile) {$('body').addClass('desactiva_scroll')}
+
+				let decrem_opacidad
+
+				$('body').addClass('desactiva_scroll')
+				if(!es_mobile) {
+
+					decrem_opacidad = 0.05
+				}else{
+
+					decrem_opacidad = 0.3
+				}
+
+				if(decrem_opacidad < 0){decrem_opacidad = 0}
+
 				$tamanio_logo_portada = $tamanio_logo_portada * 2
 				tamanio_fondo_portada = parseFloat($($portada).css('background-size').replace('%', '')) +5
 
-				$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) - 0.05)
+				$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) - decrem_opacidad)
 
 				if(parseFloat($('#portada').css('opacity')) <= 0){
 					//anim_activa = true
@@ -160,23 +237,9 @@ function anim_logo_portada(event){
 				}else{
 					$($logo_portada).css('display', 'block')
 				}
-				/*$('body').addClass('desactiva_scroll')
-				$('#portada').css('opacity', parseFloat($('#portada').css('opacity')) - 0.01)*/
+
 				transition = 1
 			}
-
-			/*
-			if($tamanio_logo_portada < 50){$tamanio_logo_portada = 50}
-
-			if($($logo_portada).width() >= $('body').width()*3){
-				anim_activa = true
-				$('body').removeClass('desactiva_scroll') 
-				$($logo_portada).css('display', 'none')
-			}else{
-				$($logo_portada).css('display', 'block')
-			}
-			*/
-
 			if(!anim_activa){
 
 				$logo_portada.css({'transition':'ease-out '+transition+'s', 'width': $tamanio_logo_portada+'%'})
@@ -186,7 +249,7 @@ function anim_logo_portada(event){
 
 				$('body').removeClass('desactiva_scroll') 
 		}
-	}
+	//}
 
 }
 
@@ -267,7 +330,6 @@ function toggle_tarjeta_servicios(elem){
 		setTimeout(function(){
 			$(elem).siblings('.cont-desplegado').css({'opacity':'1','transition':'0.8s'})
 
-
 		},200)
 	}
 
@@ -283,7 +345,6 @@ function desplaza_banner_servicios(){
 	let posicion_desplaza2 = posicion_desplaza1
 
 	function anim() {
-
 				
 			posicion_desplaza1-= velocidad
 			posicion_desplaza2-= velocidad
@@ -306,44 +367,7 @@ function desplaza_banner_servicios(){
 				posicion_desplaza2 = 0
 			}
 
-			requestAnimationFrame(anim)
-
-			/*
-			let indice = 0
-
-			let $titulos = [$('.cont-titulo-servicios')[0], $('.cont-titulo-servicios')[1]]
-
-
-			tiempo = 2000
-
-			setInterval(function(){
-
-				let pos_final = parseFloat($('.cont-titulo-servicios').css('width').replace('px', ''))
-				let pos_vuelta = 100
-
-
-				$($('.cont-titulo-servicios')[0]).css({'transition':'linear ' + tiempo/1000 + 's', 'left':'-100%'})
-
-				setTimeout(function(){
-					$($('.cont-titulo-servicios')[1]).css({'transition':'linear ' + (tiempo/1000) + 's', 'left':'-200%'})
-				}, tiempo/2 )
-				
-					
-					if(parseFloat($($('.cont-titulo-servicios')[0]).css('left').replace('px')) <= pos_final*(-1)){
-
-						$($('.cont-titulo-servicios')[0]).css({'left': pos_vuelta + '%','transition':'linear 0s'})
-					}
-					if(parseFloat($($('.cont-titulo-servicios')[1]).css('left').replace('px')) <= pos_final*(-2)){
-
-						$($('.cont-titulo-servicios')[1]).css({'left': '0%','transition':'linear 0s'})
-					}
-
-			
-				if(indice==0){indice=1}else{indice=0}
-				
-			}, 0)
-			*/
-			
+			requestAnimationFrame(anim)			
 		}
 
 

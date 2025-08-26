@@ -29,13 +29,13 @@ body{
     border-radius: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none; 
-    z-index: 2; 
+    z-index: 5; 
 }
 
 
 .desactiva_scroll{
 	overflow:hidden;
-	height: 100%;
+	/*height: 100vh;*/
 }
 
 .activa_scroll{
@@ -128,12 +128,14 @@ section{
 
 
 #portada{
+	position:relative;
 	background-color:black;
 	background-image:url("../assets/img/retina.png");
 	background-position: center;
 	background-repeat:no-repeat;
 	background-size:50%;
 	margin-top: -90px;
+	overflow: hidden;
 }
 
 #logo-portada{
@@ -538,9 +540,9 @@ section{
 
 @media(max-width: 1023px){
 
-	#sigue-cursor{
+	/*#sigue-cursor{
 		display:none;
-	}
+	}*/
 
 	nav{
 		position:absolute;
