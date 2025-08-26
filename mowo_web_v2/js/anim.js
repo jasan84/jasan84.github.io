@@ -29,6 +29,42 @@ function limita_ejecuta(func, limite) {
 
 */
 
+function anim_car1(){
+	
+	var cant_elem = 0
+	var pos_act = 0
+	var pos_manual = 0
+	var posiciones_elementos = []
+
+	var cant_elem = document.getElementsByClassName("contenido_carr1").length;
+	var porc_elem_car1 = 100/cant_elem
+	var ult_elem = (100 - porc_elem_car1) *-1
+
+	//var tiempo_vuelta = (2000 * cant_elem) + 1000
+	var tiempo_vuelta = 2000 * cant_elem;
+
+	document.getElementsByClassName("grupo_elem_carr1")[0].style.width=100*cant_elem + "%"
+
+	anim_vueltas_car1 = () =>{
+
+		if(pos_act > ult_elem){
+
+			pos_act = pos_act - porc_elem_car1;
+		}
+
+		else{
+			pos_act = 0;
+		};
+
+		document.getElementsByClassName("grupo_elem_carr1")[0].style.transform="translateX(" + pos_act + "%)";
+
+	};
+
+var intervalo_anim_car1 = setInterval(anim_vueltas_car1, tiempo_vuelta);
+
+
+};
+
 
 $(document).ready(function(){
 
@@ -70,11 +106,13 @@ $(document).ready(function(){
 	$(window).on('wheel', function(event){
 		anim_logo_portada(event)
 		anim_seccion($('#portfolio'), 1)
+		anim_car1()
 	})
 
 	$(window).on('scroll', function(event){
 		anim_logo_portada(event)
 		anim_seccion($('#portfolio'), 1)
+		anim_car1()
 	})
 
 
@@ -168,12 +206,10 @@ function anim_logo_portada(event){
 		
 		var transition
 
-
-		//if(!es_mobile) {$('body').addClass('desactiva_scroll')}
 		
 		if($(window).scrollTop() <= $('#portada').height()){
 			
-			$('body').addClass('desactiva_scroll')
+			if(parseFloat($('#portada').css('opacity')) > 0) {$('body').addClass('desactiva_scroll')}
 
 			anim_activa = false
 			if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0 || dir_scrolly == false) {
@@ -213,7 +249,7 @@ function anim_logo_portada(event){
 
 				let decrem_opacidad
 
-				$('body').addClass('desactiva_scroll')
+				if(parseFloat($('#portada').css('opacity')) > 0){$('body').addClass('desactiva_scroll')}
 				if(!es_mobile) {
 
 					decrem_opacidad = 0.05
