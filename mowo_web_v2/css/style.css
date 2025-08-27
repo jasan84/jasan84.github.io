@@ -124,6 +124,7 @@ section{
 	background-size:50%;
 	margin-top: -90px;
 	overflow: hidden;
+	padding-bottom: 0;
 }
 
 #logo-portada{
@@ -207,19 +208,27 @@ section{
 #cont-galeria-portfolio{
 	width: 80%;
 	height: 50vh;
-	flex-direction: column;
+	flex-direction: row;
+	flex-wrap: wrap;
 	margin:40px auto;
 	background-color:white;
 	align-content: center;
   justify-content: space-around;
 }
 
+.col-galeria-portfolio{
+	width: 24%;
+	height: 100%;
+	margin:0;
+	flex-direction: column;
+	justify-content: space-around;
+
+}
+
 .cont-item-galeria-portfolio{
-	margin:10px;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	border:dashed 1px black;
 	overflow: hidden;
 	position:relative;
 }
@@ -236,51 +245,44 @@ section{
 .contenido_carr{
 	height: 100%;
 	width: 100%;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position:center;
-	position: relative;
  	background-size: cover;
+	background-repeat: no-repeat;
+	background-position-y:20%;
+	position: relative;
 
+}
+
+.cont-item-galeria-portfolio{
+	width: 100%;
 }
 
 #cont-item-galeria-portfolio-1{
-	width: 15%;
 	height: 100%;
-	/*background-image: url("../assets/img/armonica.jpg");*/
 }
 
 #cont-item-galeria-portfolio-2{
-	width: 12%;
-	aspect-ratio: 0.7;
-	/*background-image: url("../assets/img/callejon_caverna.jpg");*/
+	height: 55%;
 }
 
 
 #cont-item-galeria-portfolio-3{
-	width: 12%;
-	aspect-ratio: 1.5;
-	/*background-image: url("../assets/img/callejon01.jpg");*/
+	height: 35%;
 }
 
 
 #cont-item-galeria-portfolio-4{
-	width: 15%;
+	height: 40%;
 	aspect-ratio: 1;
-	/*background-image: url("../assets/img/golden-colored-saxophone-close-up.jpg");*/
 }
 
 
 #cont-item-galeria-portfolio-5{
-	width: 10%;
-	aspect-ratio: 1;
-	/*background-image: url("../assets/img/guitar-gc0b16c86f_1920.jpg");*/
+	height: 50%;
 }
 
 #cont-item-galeria-portfolio-6{
-	width: 20%;
-	height: 100%;
-	/*background-image: url("../assets/img/tunel_urban.jpg");*/
+	height: 80%;
+	border:dashed 1px black;
 }
 
 

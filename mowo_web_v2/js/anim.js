@@ -29,11 +29,12 @@ function limita_ejecuta(func, limite) {
 
 */
 
-function anim_car1(){
 
+function anim_car1(i){
+	
 	cant_carr = 2
 
-	for(let i=1;i<= cant_carr; i++){
+	//for(let i=1;i<= cant_carr; i++){
 	
 		var cant_elem = 0
 		var pos_act = 0
@@ -44,28 +45,9 @@ function anim_car1(){
 		var ult_elem = (100 - porc_elem_car1) *-1
 
 		//var tiempo_vuelta = (2000 * cant_elem) + 1000
-		var tiempo_vuelta = 2000 * cant_elem;
+		var tiempo_vuelta = 5000 ;		
 		
-
 		document.getElementsByClassName("grupo_elem_carr"+i)[0].style.width=100*cant_elem + "%"
-
-		/*anim_vueltas_car1 = () =>{
-
-			if(pos_act > ult_elem){
-
-				pos_act = pos_act - porc_elem_car1;
-			}
-
-			else{
-				pos_act = 0;
-			};
-
-			document.getElementsByClassName("grupo_elem_carr"+i)[0].style.transform="translateX(" + pos_act + "%)";
-
-		console.log(ult_elem, porc_elem_car1)
-
-		};
-		*/
 
 		function anim_vueltas_car1(){
 
@@ -78,9 +60,7 @@ function anim_car1(){
 				pos_act = 0;
 			};
 
-			document.getElementsByClassName("grupo_elem_carr"+i)[0].style.transform="translateX(" + pos_act + "%)";
-
-		console.log(ult_elem, porc_elem_car1)
+			document.getElementsByClassName("grupo_elem_carr"+i)[0].style.transform="translateX(" + pos_act + "%)";		
 
 		};
 
@@ -88,7 +68,7 @@ function anim_car1(){
 	}
 
 
-};
+//};
 
 
 $(document).ready(function(){
@@ -101,7 +81,16 @@ $(document).ready(function(){
 	}
 
 
-	anim_car1()
+
+
+	
+	for(let i=1;i<=document.getElementsByClassName("grupo_elem_carr").length;i++){		
+			
+		anim_car1(i)
+	}
+
+
+
 
 	let pos_scrolly_ini
 	let pos_scrolly_fin
@@ -428,7 +417,7 @@ function desplaza_banner_servicios(){
 				posicion_desplaza2 = 0
 			}
 
-			requestAnimationFrame(anim)			
+			requestAnimationFrame(anim)
 		}
 
 
