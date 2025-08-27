@@ -19,6 +19,9 @@ body{
 	font-family: 'lato';
 }
 
+a{
+	text-decoration: none;
+}
 
 #sigue-cursor{
 	 position: fixed;
@@ -148,6 +151,10 @@ section{
 
 #portfolio{
 	background-color:white;
+}
+
+#portfolio hr{
+	width: 80%;
 }
 
 
@@ -282,7 +289,6 @@ section{
 
 #cont-item-galeria-portfolio-6{
 	height: 80%;
-	border:dashed 1px black;
 }
 
 
@@ -430,11 +436,12 @@ section{
 
 
 #capacitaciones{
-	background-image: linear-gradient(to bottom, white ,white,  grey, black, black,  black);
+	background-color: white;
 	/*background-image: url("../assets/img/armonica.jpg");*/
 	display:flex;
 	flex-direction:row;
-	height: 100vh;
+	min-height: 30vh !important;
+	height: 70vh;
 	width: 100vw;
 }
 
@@ -466,12 +473,12 @@ section{
 #descripcion-capacitaciones{
 	margin:0px;
 	font-size:clamp(24px, 2rem, 2.5vw);
-	color:white;
-	mix-blend-mode: difference;
+	color:black;
 }
 
 #nosotros{
-	background-color:white;
+	background-color:black;
+	color:white;
 
 }
 
@@ -494,10 +501,12 @@ section{
 
 }
 
-#titulo-nosotros p:nth-child(3){	
+#titulo-nosotros p:nth-child(3) a{	
 	font-size: clamp(25px, 2.5em, 5vw);
 	margin:20px 0px;
 	font-weight: bolder;
+	text-decoration: underline;
+	color:white;
 
 }
 
@@ -516,6 +525,9 @@ section{
 	width: 200px;
 	height: 200px;
 	margin:0px;
+	background-color: white;
+	border-radius: 100%;
+	padding:5px;
 }
 
 #cont-redes-nosotros{
@@ -534,10 +546,23 @@ section{
 	align-items: center;
 }
 
-.cont-img-redes-nosotros img{
-	width: 30%;	
+.cont-img-redes-nosotros div{
+	width: 50%;	
+	aspect-ratio: 1;
 	margin:0px;
+	background-color: white;
+	border:solid 2px white;
+	border-radius: 100%;
+	text-align: center;
+	align-content:center;
 }
+
+.cont-img-redes-nosotros div img{
+	width: 70%;	
+	aspect-ratio: 1;
+	margin:auto;
+}
+
 
 
 #cont-detalle-nosotros{
@@ -545,7 +570,7 @@ section{
 }
 
 #cont-detalle-nosotros p{
-	font-size: clamp(20px, 1.5em, 3vw);
+	font-size: clamp(18px, 1.2em, 3vw);
 	font-weight: bolder;
 	margin:2px;
 }
@@ -553,9 +578,9 @@ section{
 
 @media(max-width: 1023px){
 
-	/*#sigue-cursor{
+	#sigue-cursor{
 		display:none;
-	}*/
+	}
 
 	nav{
 		position:absolute;
@@ -648,9 +673,13 @@ section{
 
 	#cont-galeria-portfolio{
 		margin:auto;
-		flex-direction: row;
+		flex-direction: column;
 		flex-wrap: wrap;
 		height: fit-content;
+	}
+
+	.col-galeria-portfolio{
+		width: 90%;
 	}
 
 	.cont-item-galeria-portfolio{
@@ -706,7 +735,7 @@ section{
 
 	#capacitaciones{
 
-		background-image: linear-gradient(to bottom, white ,white,  grey, black, black,  black);
+		/*background-image: linear-gradient(to bottom, white ,white,  grey, black, black,  black);*/
 		height: fit-content;
 
 	}

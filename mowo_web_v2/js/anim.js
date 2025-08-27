@@ -73,9 +73,11 @@ function anim_car1(i){
 
 $(document).ready(function(){
 
-	let info_dispositivo = navigator.userAgent.toUpperCase()
+	//navigator.maxTouchPoints
 
-	if(info_dispositivo.indexOf('ANDROID') != -1 || info_dispositivo.indexOf('MACINTOSH') != -1 || info_dispositivo.indexOf('IPAD') != -1 || info_dispositivo.indexOf('IPHONE') != -1 || tamanio_pantalla < 1024){
+	let info_dispositivo = navigator.userAgent.toUpperCase()	
+
+	if(info_dispositivo.indexOf('ANDROID') != -1 || info_dispositivo.indexOf('IPAD') != -1 || info_dispositivo.indexOf('IPHONE') != -1 || tamanio_pantalla < 1024 || navigator.maxTouchPoints != 0){
 		
 		es_mobile =true
 	}
@@ -85,7 +87,7 @@ $(document).ready(function(){
 
 	
 	for(let i=1;i<=document.getElementsByClassName("grupo_elem_carr").length;i++){		
-			
+
 		anim_car1(i)
 	}
 
@@ -138,14 +140,18 @@ $(document).ready(function(){
 
 	desplaza_banner_servicios()
 
- 	$(document).on('mousemove', (e) => {
-        
-        $('#sigue-cursor').css('transform',`translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`);
-    });
+	if(!es_mobile){
+	 	
+	 	$(document).on('mousemove', (e) => {
+	        
+	        $('#sigue-cursor').css('transform',`translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`);
+	    });
 
+	}
 	window.onresize = function(){
 
 		tamanio_pantalla = window.innerWidth
+
 
 		if(tamanio_pantalla < 1024){
 			
