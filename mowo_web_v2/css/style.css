@@ -24,7 +24,7 @@ a{
 }
 
 #sigue-cursor{
-	 position: fixed;
+	 	position: fixed;
     width: 30px;
     height: 30px;
     background-color:white;
@@ -203,11 +203,11 @@ section{
  	margin:0px;
  }
 
- #img-portada-portfolio{
- 	background-image:url("../assets/img/img-portada-portfolio.png");
+ #reel-portada-portfolio{
+ 	/*background-image:url("../assets/img/img-portada-portfolio.png");
  	background-size:cover;
  	background-position:center;
- 	background-repeat: no-repeat;
+ 	background-repeat: no-repeat;*/
 	width:60%;
 	height: 100%;
  }
@@ -246,7 +246,7 @@ section{
 	display: flex;
 	flex-direction: row;
 	animation: ease-in;
-	transition: 2s;
+	/*transition: 2s;*/
 }
 
 .contenido_carr{
@@ -579,7 +579,7 @@ section{
 @media(max-width: 1023px){
 
 	#sigue-cursor{
-		display:none;
+		visibility:hidden;
 	}
 
 	nav{
@@ -666,7 +666,7 @@ section{
 		display:none;
 	}
 
-	 #img-portada-portfolio{
+	 #reel-portada-portfolio{
 	 	width: 100%;
 	 	height: 80%;
 	 }

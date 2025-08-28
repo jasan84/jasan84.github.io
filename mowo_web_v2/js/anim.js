@@ -29,46 +29,94 @@ function limita_ejecuta(func, limite) {
 
 */
 
+/*
+async function anim_car1(i){
 
-function anim_car1(i){
+	console.log(i)
 	
 	cant_carr = 2
-
-	//for(let i=1;i<= cant_carr; i++){
 	
-		var cant_elem = 0
-		var pos_act = 0
+	var cant_elem = 0
+	var pos_act = 0
 
-		var cant_elem = document.getElementsByClassName("contenido_carr"+i).length;
+	var cant_elem = document.getElementsByClassName("contenido_carr"+i).length
 
-		var porc_elem_car1 = 100/cant_elem
-		var ult_elem = (100 - porc_elem_car1) *-1
+	var porc_elem_car1 = 100/cant_elem
+	var ult_elem = (100 - porc_elem_car1) *-1
 
-		//var tiempo_vuelta = (2000 * cant_elem) + 1000
-		var tiempo_vuelta = 5000 ;		
-		
-		document.getElementsByClassName("grupo_elem_carr"+i)[0].style.width=100*cant_elem + "%"
+	//var tiempo_vuelta = (2000 * cant_elem) + 1000
+	var tiempo_vuelta = 5000 
+	
+	$($(".grupo_elem_carr"+i)[0]).css({'width': 100*cant_elem+'%'})
 
-		function anim_vueltas_car1(){
+	function anim_vueltas_car1(){
 
-			if(pos_act > ult_elem){
+		if(pos_act > ult_elem){
 
-				pos_act = pos_act - porc_elem_car1;
-			}
+			pos_act = pos_act - porc_elem_car1
+			transition = 2
+		}
 
-			else{
-				pos_act = 0;
-			};
-
-			document.getElementsByClassName("grupo_elem_carr"+i)[0].style.transform="translateX(" + pos_act + "%)";		
-
+		else{
+			pos_act = 0;
+			transition = 1
 		};
 
-		var intervalo_anim_car1 = setInterval(anim_vueltas_car1, tiempo_vuelta);
+		$($(".grupo_elem_carr"+i)[0]).css({'transform':'translateX(' + pos_act + '%)', 'transition':transition + 's'});
+
+	};
+
+	setInterval(anim_vueltas_car1, tiempo_vuelta)
+
+}
+
+*/
+
+
+async function anim_car1(){
+
+	let cant_carr = $('.grupo_elem_carr').length
+
+	for(let i=1; i<=cant_carr;i++){
+		
+		let cant_elem_carr = ($(`.contenido_carr${i}`)).length
+		let porc_elem_car1 = 100/cant_elem_carr
+		let ult_elem = (100 - porc_elem_car1) *-1
+		let params_keyframes = []
+		let carrousel = $($(`.grupo_elem_carr${i}`)[0])
+		let pos_act = 0
+		let pos_ini = 0
+
+
+		$($(`.grupo_elem_carr${i}`)[0]).css({'width': `${100*cant_elem_carr}%`, 'transition':'2s'})
+		
+		params_keyframes.push({transform:`translateX(${pos_ini}%)`})
+
+		for(let j=0;j<cant_elem_carr-1;j++){
+
+			pos_act-= porc_elem_car1
+			
+			if(j==0){
+				pos_ini = pos_act
+			}
+			//if(pos_act <= ult_elem){pos_act = 0}
+			params_keyframes.push({transform:`translateX(${pos_act}%)`})
+
+		}
+
+		params_keyframes.push({transform:`translateX(0%)`})
+
+		$(`.grupo_elem_carr${i}`)[0].animate(
+		
+			params_keyframes, 
+			{
+				duration: 4000 * cant_elem_carr + i*800,
+				iterations: Infinity
+			}
+		)
 	}
 
-
-//};
+}
 
 
 $(document).ready(function(){
@@ -86,11 +134,13 @@ $(document).ready(function(){
 
 
 	
-	for(let i=1;i<=document.getElementsByClassName("grupo_elem_carr").length;i++){		
+	//for(let i=1;i<=2/*document.getElementsByClassName("grupo_elem_carr").length*/;i++){		
+	/*for(let i=1;i<=document.getElementsByClassName("grupo_elem_carr").length;i++){		
 
 		anim_car1(i)
-	}
+	}*/
 
+	anim_car1()
 
 
 
@@ -140,11 +190,11 @@ $(document).ready(function(){
 
 	desplaza_banner_servicios()
 
-	if(!es_mobile){
+	if(!es_mobile || navigator.maxTouchPoints == 0){
 	 	
 	 	$(document).on('mousemove', (e) => {
 	        
-	        $('#sigue-cursor').css('transform',`translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`);
+	        $('#sigue-cursor').css({'transform':`translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`, 'visibility':'visible'});
 	    });
 
 	}
@@ -309,6 +359,9 @@ function anim_logo_portada(event){
 
 }
 
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 async function anim_seccion(contenedor, offset){
 
@@ -318,9 +371,6 @@ async function anim_seccion(contenedor, offset){
 	let alto_contenedor = parseFloat($contenedor.css('height').replaceAll('px'))
 	let $elems = $('.titulo-portfolio')
 
-	function sleep(ms) {
-		return new Promise(resolve => setTimeout(resolve, ms));
-	}
 
 	if(posicion_scroll >= (offset_contenedores[offset]/2 ) && posicion_scroll <= ($contenedor.offset().top) + alto_contenedor){
 
@@ -337,7 +387,7 @@ async function anim_seccion(contenedor, offset){
 		for(let a=0; a<$elems.length;a++){
 
 			$($elems[a]).css({'transform':'translateX(-150%)', 'transition':'ease-in-out 0.5s'})
-			await sleep(300)
+			await sleep(150)
 
 		}
 	}
