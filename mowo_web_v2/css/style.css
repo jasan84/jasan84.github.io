@@ -21,6 +21,7 @@ body{
 
 a{
 	text-decoration: none;
+	cursor:none;
 }
 
 #sigue-cursor{
@@ -65,6 +66,7 @@ header{
 	justify-content: space-between;
 	background-color: rgba(255,255,255,0.8);
 	border-radius: 20px;
+	border:solid 1px black;
 	align-items: center;
 	z-index: 3;
 }
@@ -104,7 +106,7 @@ nav a{
 	isolation: isolate;
 	margin-left:auto;
 	font-size:clamp(20px, 1.5rem, 15vw);
-	font-weight: bolder;
+	font-weight: regular;
 	text-decoration:none;
 	cursor:none;
 	color: black;
@@ -112,22 +114,21 @@ nav a{
 
 section{
 	width: 100vw;
-	min-height: 100vh;
-	padding:90px 0px;
-	padding-top:100px;
+	min-height: calc(100vh - 90px);
+	padding:90px 0px 0px 0px;
 }
 
 
 #portada{
 	position:relative;
 	background-color:black;
-	background-image:url("../assets/img/retina.png");
+	background-image:url("../assets/img/retina.webp");
 	background-position: center;
 	background-repeat:no-repeat;
 	background-size:50%;
 	margin-top: -90px;
 	overflow: hidden;
-	padding-bottom: 0;
+	padding-bottom: 90px;
 }
 
 #logo-portada{
@@ -204,10 +205,6 @@ section{
  }
 
  #reel-portada-portfolio{
- 	/*background-image:url("../assets/img/img-portada-portfolio.png");
- 	background-size:cover;
- 	background-position:center;
- 	background-repeat: no-repeat;*/
 	width:60%;
 	height: 100%;
  }
@@ -246,7 +243,8 @@ section{
 	display: flex;
 	flex-direction: row;
 	animation: ease-in;
-	/*transition: 2s;*/
+	/*transition: 2s;
+	filter:grayscale(100) blur(1px);	*/
 }
 
 .contenido_carr{
@@ -256,11 +254,11 @@ section{
 	background-repeat: no-repeat;
 	background-position-y:20%;
 	position: relative;
-
 }
 
 .cont-item-galeria-portfolio{
 	width: 100%;
+
 }
 
 #cont-item-galeria-portfolio-1{
@@ -454,8 +452,10 @@ section{
 
 #img-capacitaciones{
 	width: 30%;
-	height: 50%;
-	border:dashed 1px black;
+	height: 80%;
+	background-image: url("../assets/img/capacitacion1.webp");
+	background-size: cover;
+	margin:auto;
 }
 
 #cont-descripcion-capacitaciones{
@@ -517,7 +517,7 @@ section{
 }
 
 #cont-logo-nosotros{
-	width: 50%;
+	width: 35%;
 	height: 50%;
 }
 
@@ -546,7 +546,7 @@ section{
 	align-items: center;
 }
 
-.cont-img-redes-nosotros div{
+.cont-img-redes-nosotros a{
 	width: 50%;	
 	aspect-ratio: 1;
 	margin:0px;
@@ -571,7 +571,7 @@ section{
 
 #cont-detalle-nosotros p{
 	font-size: clamp(18px, 1.2em, 3vw);
-	font-weight: bolder;
+	font-weight: regular;
 	margin:2px;
 }
 
@@ -748,7 +748,6 @@ section{
 	#img-capacitaciones{
 		width: 100%;
 		aspect-ratio: 1;
-		border: dashed 2px grey;
 	}
 
 	#cont-descripcion-capacitaciones{

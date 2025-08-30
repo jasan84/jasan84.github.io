@@ -29,50 +29,103 @@ function limita_ejecuta(func, limite) {
 
 */
 
-/*
-async function anim_car1(i){
+$('.grupo_elem_carr').on('mouseenter', (e) =>{	
 
-	console.log(i)
-	
-	cant_carr = 2
-	
-	var cant_elem = 0
-	var pos_act = 0
+	let $carrousel = $(e.currentTarget)[0]
+	let cant_elem_carr = $($carrousel).find('.contenido_carr').length
+	anim_car1($carrousel, cant_elem_carr)
+})
 
-	var cant_elem = document.getElementsByClassName("contenido_carr"+i).length
+$('.grupo_elem_carr').on('click', (e) =>{	
 
-	var porc_elem_car1 = 100/cant_elem
-	var ult_elem = (100 - porc_elem_car1) *-1
+	let $carrousel = $(e.currentTarget)[0]
+	let cant_elem_carr = $($carrousel).find('.contenido_carr').length
+	anim_car1($carrousel, cant_elem_carr)
+})
 
-	//var tiempo_vuelta = (2000 * cant_elem) + 1000
-	var tiempo_vuelta = 5000 
-	
-	$($(".grupo_elem_carr"+i)[0]).css({'width': 100*cant_elem+'%'})
 
-	function anim_vueltas_car1(){
+$('a, .interact').on('mouseenter', () =>{
 
-		if(pos_act > ult_elem){
+	$('#sigue-cursor').css({'background-color':'white', 'width':'50px', 'height':'50px', 'box-shadow':'0px 0px 25px white' })
+})
 
-			pos_act = pos_act - porc_elem_car1
-			transition = 2
-		}
+$('a, .interact').on('mouseleave', () =>{
+	$('#sigue-cursor').css({'background-color':'white', 'width':'30px', 'height':'30px', 'box-shadow':'none'})
+})
 
-		else{
-			pos_act = 0;
-			transition = 1
-		};
 
-		$($(".grupo_elem_carr"+i)[0]).css({'transform':'translateX(' + pos_act + '%)', 'transition':transition + 's'});
+function crea_sliders(){
 
-	};
 
-	setInterval(anim_vueltas_car1, tiempo_vuelta)
+	let cant_carr = $('.grupo_elem_carr').length
+
+	for(let i=1; i<=cant_carr;i++){
+
+		let cant_elem_carr = ($(`.contenido_carr${i}`)).length
+
+		$($(`.grupo_elem_carr${i}`)[0]).css({'width': `${100*cant_elem_carr}%`, 'transition':'2s'})
+	}
+
+	$('.grupo_elem_carr').addClass('interact')
+
+
 
 }
 
-*/
+
+async function anim_car1(carrousel, cant_elem_carr){
+
+	//let cant_carr = $('.grupo_elem_carr').length
+
+	//for(let i=1; i<=cant_carr;i++){
+		
+		//let cant_elem_carr = $(cont_carrousel).length
+		//console.log(cant_elem_carr)
+		let porc_elem_car1 = 100/cant_elem_carr
+		let ult_elem = (100 - porc_elem_car1) *-1
+		let params_keyframes = []
+		//let carrousel = $(carrousel)
+		let pos_act = 0
+		let pos_ini = 0
 
 
+		//$(carrousel).css({'width': `${100*cant_elem_carr}%`, 'transition':'2s'})
+		
+		params_keyframes.push({transform:`translateX(${pos_ini}%)`})
+
+		for(let j=0;j<cant_elem_carr-1;j++){
+
+			pos_act-= porc_elem_car1
+			
+			if(j==0){
+				pos_ini = pos_act
+			}
+			//if(pos_act <= ult_elem){pos_act = 0}
+			params_keyframes.push({transform:`translateX(${pos_act}%)`})
+
+		}
+
+		params_keyframes.push({transform:`translateX(0%)`})
+
+		if($(carrousel).css('transform') == 'none'){
+
+
+			$(carrousel)[0].animate(
+			
+				params_keyframes, 
+				{
+					duration: 3000 * cant_elem_carr,
+					iterations: 1
+				}
+			)
+
+		}
+
+	//}
+
+}
+
+/*
 async function anim_car1(){
 
 	let cant_carr = $('.grupo_elem_carr').length
@@ -111,12 +164,13 @@ async function anim_car1(){
 			params_keyframes, 
 			{
 				duration: 4000 * cant_elem_carr + i*800,
-				iterations: Infinity
+				iterations: 1
 			}
 		)
 	}
 
 }
+*/
 
 
 $(document).ready(function(){
@@ -130,17 +184,8 @@ $(document).ready(function(){
 		es_mobile =true
 	}
 
-
-
-
-	
-	//for(let i=1;i<=2/*document.getElementsByClassName("grupo_elem_carr").length*/;i++){		
-	/*for(let i=1;i<=document.getElementsByClassName("grupo_elem_carr").length;i++){		
-
-		anim_car1(i)
-	}*/
-
-	anim_car1()
+	crea_sliders()
+	//anim_car1()
 
 
 
@@ -198,6 +243,8 @@ $(document).ready(function(){
 	    });
 
 	}
+
+
 	window.onresize = function(){
 
 		tamanio_pantalla = window.innerWidth
