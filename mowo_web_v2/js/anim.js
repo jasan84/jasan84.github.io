@@ -46,11 +46,11 @@ $('.grupo_elem_carr').on('click', (e) =>{
 
 $('a, .interact').on('mouseenter', () =>{
 
-	$('#sigue-cursor').css({'background-color':'white', 'width':'50px', 'height':'50px', 'box-shadow':'0px 0px 25px white' })
+	$('#sigue-cursor').css({'background-color':'rgba(244, 63, 193, 0.8)', 'width':'50px', 'height':'50px', 'box-shadow':'0px 0px 25px rgb(244, 63, 193)' })
 })
 
 $('a, .interact').on('mouseleave', () =>{
-	$('#sigue-cursor').css({'background-color':'white', 'width':'30px', 'height':'30px', 'box-shadow':'none'})
+	$('#sigue-cursor').css({'background-color':'rgb(244, 63, 193)', 'width':'30px', 'height':'30px', 'box-shadow':'none'})
 })
 
 
