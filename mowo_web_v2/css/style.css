@@ -17,6 +17,7 @@ body{
 	margin:0px;
 	padding:0px;
 	font-family: 'lato';
+	position:relative;
 }
 
 a{
@@ -38,9 +39,8 @@ a{
 }
 
 
-.desactiva_scroll{
+.desactiva_scroll, .desactiva_scroll2{
 	overflow:hidden;
-	/*height: 100vh;*/
 }
 
 .activa_scroll{
@@ -55,6 +55,54 @@ a{
 
 }
 
+#modal{
+	position:fixed;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	width: 85vw;
+	height: 85vh;
+	background-color: rgba(0, 0, 0, 0.9);
+	opacity: 0;
+	z-index:4;
+	transition:0.2s ease-in-out;
+	/*border:solid 1px white;*/
+	border-radius: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	overflow: scroll;
+	scrollbar-width: none;
+}
+
+.tarjeta-modal{
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: nowrap;
+	width: 30%;
+	height: 90%;
+	overflow: scroll;
+	scrollbar-width: none;
+	margin:auto;
+	padding: 10px;
+	border:solid 1px white;
+	border-radius: 20px;
+	color:white;
+	text-align: center;
+}
+
+.titulo-tarjeta-modal{
+	min-height: 10%;
+}
+
+.detalles-tarjeta-modal li{
+	margin:15px;
+	text-align: left;
+}
+
+.detalles-tarjeta-modal li::marker{
+		color:rgb(244, 63, 193);
+}
 
 header{
 	width: 60%;
@@ -659,6 +707,17 @@ section{
 		border-radius: 0px;
 		mix-blend-mode: unset;
 		background-color: white;
+	}
+
+	#modal{
+		width: 100vw;
+		height: 100vh;
+		border:none !important;
+	}
+	.tarjeta-modal{
+		width: 80% !important;
+		height: fit-content !important;
+		margin-top:20px;
 	}
 
 	#portada{

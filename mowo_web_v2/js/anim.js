@@ -282,6 +282,8 @@ $(document).ready(function(){
     	$('nav a').on('click', despliega_nav_mobile)
     }
 
+    $('#enlace-modal').on('click', muestra_modal)
+
 })
 
 function despliega_nav_mobile (){
@@ -525,6 +527,64 @@ function desplaza_banner_servicios(){
 
 
 	anim()
+	
+}
+
+
+function muestra_modal(){
+
+	$modal = $('<div>')
+	$modal.attr('id', 'modal')
+
+	$('#servicios').append($modal)
+
+	let titulos_modal = ['Sitio Web Profesional para Emprendedores', 'Sitio Web Autogestionable para Emprendedores', 'Sitio Web Corporativo para Empresas']
+	let resumen_plan = ['Ideal para marcas personales, profesionales independientes o emprendimientos que necesitan una web clara, funcional y bien presentada.', 'Ideal para quienes quieren una web profesional y también poder gestionarla de forma autónoma, editando imágenes y textos sin depender de nadie.', 'Pensado para empresas consolidadas o en crecimiento que necesitan mostrar profesionalismo, trayectoria y estructura.']
+	let detalles_plan = [['Diseño 100% personalizado','Contenido a medida (servicios, portfolio, contacto, etc.)','Botón de WhatsApp integrado','Enlaces a redes sociales','Optimización para todos los dispositivos','Mail corporativo (ejemplo@marca.com.ar)', 'Registro de dominio propio GRATIS','Hosting y mantenimiento GRATIS','Certificación SSL de seguridad','Copia de seguridad semanal','Soporte personalizado'],['Todo lo incluido en el Plan 1','Panel autogestionable (editar textos, imágenes, secciones)','Carga inicial de contenidos','Acompañamiento en el uso del panel'],['Diseño 100% personalizado','Hasta 8 páginas internas (Inicio, Nosotros, Servicios, Portfolio, Blog, Contacto, etc.)','Contenido a medida','Formulario de contacto profesional','Botón de WhatsApp y redes sociales','Optimización responsive (todos los dispositivos)','Hasta 3 mails corporativos (ejemplo@empresa.com.ar)','Registro de dominio propio GRATIS','Hosting y mantenimiento GRATIS','Certificado SSL','Copia de seguridad semanal','Soporte técnico y estratégico personalizado']]
+
+	for(let i=0; i<3;i++){
+
+		let $tarjeta_modal = $('<div>')
+		$tarjeta_modal.addClass('tarjeta-modal contenedor')
+
+		let $titulo = $('<h3>')
+		$titulo.text(titulos_modal[i])
+		$titulo.addClass('titulo-tarjeta-modal')
+
+		$tarjeta_modal.append($titulo)
+
+		let $resumen_plan = $('<p class="resumen-tarjeta-modal">')
+		$resumen_plan.text(resumen_plan[i])
+
+		$tarjeta_modal.append($resumen_plan)
+
+		$detalle_plan = $('<ul class="detalles-tarjeta-modal">')
+
+		for(let j=0;j<detalles_plan[i].length;j++){
+
+			$detalle_plan.append('<li>' + detalles_plan[i][j] + '</li>')
+		}
+
+		$tarjeta_modal.append($detalle_plan)
+
+		$modal.append($tarjeta_modal)
+
+	}
 
 	
+	$modal.on('click', function (e){
+
+		$modal.css({'opacity':'0'})
+
+		setTimeout(function(){			
+			$('body').removeClass('desactiva_scroll2')
+			e.target.remove()		
+		},200)
+	})
+
+	setTimeout(function(){
+		$modal.css({'opacity':'1'})
+	},10)
+
+	$('body').addClass('desactiva_scroll2')	
 }
