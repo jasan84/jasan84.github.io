@@ -711,7 +711,7 @@ section{
 
 	#modal{
 		width: 100vw;
-		height: 100vh;
+		height: 90vh;
 		border:none !important;
 	}
 	.tarjeta-modal{
