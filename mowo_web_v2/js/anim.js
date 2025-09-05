@@ -576,14 +576,14 @@ function muestra_modal(){
 	},10)
 
 	$('body').addClass('desactiva_scroll2')	
-	
+
 	
 	$modal.on('click', function (e){
 
 		$modal.css({'opacity':'0'})
 
 		setTimeout(function(){			
-			e.target.remove()		
+			e.currentTarget.remove()		
 			$('body').removeClass('desactiva_scroll2')
 		},200)
 	})
