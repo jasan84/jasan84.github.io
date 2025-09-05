@@ -55,6 +55,16 @@ a{
 
 }
 
+#enlace-modal{
+	width: fit-content;
+	margin:auto;
+	background-color: white;	
+	border-radius: 10px;
+	padding: 10px;
+	color:rgb(244, 63, 193);
+	font-weight: bolder;
+}
+
 #modal{
 	position:fixed;
 	top:50%;
@@ -218,9 +228,10 @@ section{
 
 #cont-portada-portfolio{
 	max-width: 80%;
-	height: 50vh;
+	min-height: 50vh;
 	margin:auto;
 	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
 #cont-titulo-portfolio{
@@ -255,7 +266,8 @@ section{
 
  #reel-portada-portfolio{
 	width:60%;
-	height: 100%;
+	/*height: 100%;*/
+	justify-content: center;
  }
 
 #cont-galeria-portfolio{
@@ -266,11 +278,11 @@ section{
 	margin:40px auto;
 	background-color:white;
 	align-content: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .col-galeria-portfolio{
-	width: 24%;
+	width: 30%;
 	height: 100%;
 	margin:0;
 	flex-direction: column;
@@ -306,7 +318,7 @@ section{
 }
 
 .cont-item-galeria-portfolio{
-	width: 100%;
+	/*width: 100%;*/
 
 }
 
@@ -315,27 +327,38 @@ section{
 }
 
 #cont-item-galeria-portfolio-2{
-	height: 55%;
+	width: 50%;
+	height: 100%;
+	margin:auto;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
 }
 
 
 #cont-item-galeria-portfolio-3{
-	height: 35%;
+	height: 60%;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
 }
 
 
 #cont-item-galeria-portfolio-4{
 	height: 40%;
-	aspect-ratio: 1;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
 }
 
 
 #cont-item-galeria-portfolio-5{
-	height: 50%;
+	width: 50%;
+	height: 100%;
+	margin:auto;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
 }
 
 #cont-item-galeria-portfolio-6{
-	height: 80%;
+	height: 100%;
 }
 
 
@@ -445,8 +468,8 @@ section{
 .img-desplegable{
 	width: 30%;
 	aspect-ratio: 1 !important;
-	/*display:inline-block;*/
-	border:dotted 1px white;
+	/*display:inline-block;
+	background-color: white;*/
 }
 
 #cont-img-desplegable-web{
@@ -709,6 +732,10 @@ section{
 		background-color: white;
 	}
 
+	section{
+		padding:90px 0px;
+	}
+
 	#modal{
 		width: 100vw;
 		height: 90vh;
@@ -762,8 +789,9 @@ section{
 	}
 
 	 #reel-portada-portfolio{
-	 	width: 100%;
+	 	width: 90%;
 	 	height: 80%;
+	 	margin:auto;
 	 }
 
 	#cont-galeria-portfolio{

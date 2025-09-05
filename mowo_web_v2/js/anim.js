@@ -571,20 +571,20 @@ function muestra_modal(){
 
 	}
 
+	setTimeout(function(){
+		$modal.css({'opacity':'1'})
+	},10)
+
+	$('body').addClass('desactiva_scroll2')	
+	
 	
 	$modal.on('click', function (e){
 
 		$modal.css({'opacity':'0'})
 
 		setTimeout(function(){			
-			$('body').removeClass('desactiva_scroll2')
 			e.target.remove()		
+			$('body').removeClass('desactiva_scroll2')
 		},200)
 	})
-
-	setTimeout(function(){
-		$modal.css({'opacity':'1'})
-	},10)
-
-	$('body').addClass('desactiva_scroll2')	
 }
