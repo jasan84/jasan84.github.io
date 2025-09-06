@@ -506,6 +506,128 @@ section{
 	bottom:0;
 }
 
+#cont-img-social-media{
+	/*border:dotted 1px white;*/
+	width: 100%;
+	height: fit-content !important;
+	aspect-ratio: 0 !important;
+	justify-content: center;
+}
+
+
+#cel-social-media{
+	width: 250px;
+	height: 450px;
+	border:solid 5px grey;
+	border-radius: 15px;
+	overflow: hidden;
+	padding: 0px;
+	/*overflow: scroll;
+	scrollbar-width: none;*/
+}
+
+#camara-cel-social-media{
+	position:relative;
+	top:5px;
+	margin:auto;
+	border-radius: 100%;
+	background-color: black;
+	width: 15px;
+	height: 15px;
+	z-index: 5;
+}
+
+#pantalla-cel-social-media{
+	position:relative;
+	width: 100%;
+	height: 100%;
+	margin:-15px 0px 0px 0px;
+	background-color: white;
+	display: flex;
+	/*overflow-y: scroll;
+	scrollbar-width: none;*/
+	border-radius: 0px;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+#botonera-cel-social-media{
+	position:sticky;
+	bottom:0;
+	width: 100%;
+	height: 40px;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+#back-cel-social-media{
+
+	width: fit-content;
+	margin: auto;
+	font-size: 35px;
+
+}
+
+.pag-social-media{
+	width: 100%;
+	height: 100%;
+}
+
+#home-social-media{
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.avatar-follow-social-media{
+	width: 80px;
+	aspect-ratio: 1;
+	border-radius: 100%;
+	margin:10px;
+
+}
+
+.feed-social-media{
+	display: none;
+}
+
+#cont-banner-cel-social-media{
+	position:sticky;
+	top:0;
+	background-color:white;
+	width: 100%;
+	height: 20%;
+	border-bottom:solid 1px grey;
+	border-radius: 0;
+}
+
+.avatar-cel-social-media{
+	position:relative;
+	height: 90%;
+	aspect-ratio: 1;
+	border:solid 1px black;
+	border-radius: 100%;
+	margin:auto 2px;	
+}
+
+.cont-min-cel-social-media{
+	width: 90%;
+	margin:20px auto auto auto;
+	height: 65%;
+	overflow-y: scroll;
+	scrollbar-width: none;
+}
+
+.min-cel-social-media{
+	width: 110px;
+	height: 110px;
+	/*border:dotted 1px red;*/
+	margin:2px 0px;
+	background-size:cover;
+
+}
+
 
 .cont-descripcion-desplegable{
 	width: 50%;

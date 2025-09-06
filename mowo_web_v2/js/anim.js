@@ -284,6 +284,20 @@ $(document).ready(function(){
 
     $('#enlace-modal').on('click', muestra_modal)
 
+
+    $('.min-cel-social-media').on('click', (e) =>{
+    	muestra_img_social_media(e)
+
+    })
+
+    $('.avatar-follow-social-media').on('click', (e) =>{
+
+    	abre_feed_social_media(e)
+
+    })
+
+    $('#back-cel-social-media').on('click',back_social_media)
+
 })
 
 function despliega_nav_mobile (){
@@ -587,4 +601,43 @@ function muestra_modal(){
 			$('body').removeClass('desactiva_scroll2')
 		},200)
 	})
+}
+
+function muestra_img_social_media(e){
+
+	if($('#pantalla-cel-social-media').find('.img-cel-social-media').length == 0){
+
+		$cont_img = $('<div class="img-cel-social-media">')
+		$($cont_img).css({'background-image': $(e.currentTarget).css('background-image'), 'background-size':'100%', 'background-repeat':'no-repeat', 'background-position':'center','width':'100%', 'height':'100%', 'position':'absolute', 'top':'0', 'background-color':' rgba(0, 0, 0, 0.7)'})	
+		//$('#pantalla-cel-social-media').css('overflowY', 'hidden')
+
+		$('#pantalla-cel-social-media').append($cont_img)
+
+		$($cont_img).on('click', (ev) =>{
+			ev.currentTarget.remove()
+			//$('#pantalla-cel-social-media').css('overflowY', 'scroll')
+		})
+
+
+	}
+}
+
+
+function abre_feed_social_media(e){
+
+	id_feed = $(e.currentTarget).attr('data-value')
+
+	$('.feed-social-media').css('display','none')
+	$('#home-social-media').css('display','none')	
+	$('#feed-social-media-'+id_feed).css('display','block')
+
+}
+
+
+function back_social_media(){
+	
+
+	$('.img-cel-social-media').remove()
+	$('.feed-social-media').css('display','none')
+	$('#home-social-media').css('display','flex')	
 }
