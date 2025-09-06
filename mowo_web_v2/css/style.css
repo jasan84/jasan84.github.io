@@ -609,6 +609,8 @@ section{
 	border:solid 1px black;
 	border-radius: 100%;
 	margin:auto 2px;	
+	background-size: cover;
+	background-position: center;
 }
 
 .cont-min-cel-social-media{

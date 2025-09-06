@@ -605,6 +605,8 @@ function muestra_modal(){
 
 function muestra_img_social_media(e){
 
+	$('.min-cel-social-media').addClass('interact')
+
 	if($('#pantalla-cel-social-media').find('.img-cel-social-media').length == 0){
 
 		$cont_img = $('<div class="img-cel-social-media">')
